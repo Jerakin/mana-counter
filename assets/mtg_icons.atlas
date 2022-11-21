@@ -1,0 +1,466 @@
+images {
+  image: "/assets/mtg_icons/ability-activated.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-adamant.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-adapt.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-addendum.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-adventure.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-afflict.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-afterlife.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-aftermath.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-amass.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-ascend.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-companion.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-constellation.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-convoke.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-deathtouch.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-defender.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-devotion.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-doublestrike.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-embalm.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-enrage.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-escape.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-eternalize.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-explore.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-firststrike.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-flash.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-flying.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-haste.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-hexproof-black.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-hexproof-blue.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-hexproof-green.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-hexproof-red.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-hexproof-white.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-hexproof.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-indestructible.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-jumpstart.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-lifelink.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-menace.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-mentor.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-mutate.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-proliferate.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-prowess.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-raid.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-reach.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-revolt.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-riot.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-spectacle.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-static.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-summoning-sickness.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-surveil.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-trample.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-transform.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-triggered.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-undergrowth.png"
+}
+images {
+  image: "/assets/mtg_icons/ability-vigilance.png"
+}
+images {
+  image: "/assets/mtg_icons/acorn.png"
+}
+images {
+  image: "/assets/mtg_icons/artifact.png"
+}
+images {
+  image: "/assets/mtg_icons/artist-brush.png"
+}
+images {
+  image: "/assets/mtg_icons/artist-nib.png"
+}
+images {
+  image: "/assets/mtg_icons/b.png"
+}
+images {
+  image: "/assets/mtg_icons/c.png"
+}
+images {
+  image: "/assets/mtg_icons/chaos.png"
+}
+images {
+  image: "/assets/mtg_icons/clan-abzan.png"
+}
+images {
+  image: "/assets/mtg_icons/clan-atarka.png"
+}
+images {
+  image: "/assets/mtg_icons/clan-dromoka.png"
+}
+images {
+  image: "/assets/mtg_icons/clan-jeskai.png"
+}
+images {
+  image: "/assets/mtg_icons/clan-kolaghan.png"
+}
+images {
+  image: "/assets/mtg_icons/clan-mardu.png"
+}
+images {
+  image: "/assets/mtg_icons/clan-ojutai.png"
+}
+images {
+  image: "/assets/mtg_icons/clan-silumgar.png"
+}
+images {
+  image: "/assets/mtg_icons/clan-sultai.png"
+}
+images {
+  image: "/assets/mtg_icons/clan-temur.png"
+}
+images {
+  image: "/assets/mtg_icons/conspiracy.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-arrow.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-brick.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-charge.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-devotion.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-doom.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-echo.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-flame.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-flood.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-fungus.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-gold.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-ki.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-lore.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-loyalty.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-mining.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-minus-uneven.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-minus.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-muster.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-paw.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-pin.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-plus-uneven.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-plus.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-scream.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-skeleton.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-skull.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-slime.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-time.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-verse.png"
+}
+images {
+  image: "/assets/mtg_icons/counter-vortex.png"
+}
+images {
+  image: "/assets/mtg_icons/creature.png"
+}
+images {
+  image: "/assets/mtg_icons/dfc-day.png"
+}
+images {
+  image: "/assets/mtg_icons/dfc-emrakul.png"
+}
+images {
+  image: "/assets/mtg_icons/dfc-enchantment.png"
+}
+images {
+  image: "/assets/mtg_icons/dfc-ignite.png"
+}
+images {
+  image: "/assets/mtg_icons/dfc-moon.png"
+}
+images {
+  image: "/assets/mtg_icons/dfc-night.png"
+}
+images {
+  image: "/assets/mtg_icons/dfc-spark.png"
+}
+images {
+  image: "/assets/mtg_icons/e.png"
+}
+images {
+  image: "/assets/mtg_icons/enchantment.png"
+}
+images {
+  image: "/assets/mtg_icons/flashback.png"
+}
+images {
+  image: "/assets/mtg_icons/g.png"
+}
+images {
+  image: "/assets/mtg_icons/guild-azorius.png"
+}
+images {
+  image: "/assets/mtg_icons/guild-boros.png"
+}
+images {
+  image: "/assets/mtg_icons/guild-dimir.png"
+}
+images {
+  image: "/assets/mtg_icons/guild-golgari.png"
+}
+images {
+  image: "/assets/mtg_icons/guild-gruul.png"
+}
+images {
+  image: "/assets/mtg_icons/guild-izzet.png"
+}
+images {
+  image: "/assets/mtg_icons/guild-orzhov.png"
+}
+images {
+  image: "/assets/mtg_icons/guild-rakdos.png"
+}
+images {
+  image: "/assets/mtg_icons/guild-selesnya.png"
+}
+images {
+  image: "/assets/mtg_icons/guild-simic.png"
+}
+images {
+  image: "/assets/mtg_icons/half.png"
+}
+images {
+  image: "/assets/mtg_icons/infinity.png"
+}
+images {
+  image: "/assets/mtg_icons/instant.png"
+}
+images {
+  image: "/assets/mtg_icons/land.png"
+}
+images {
+  image: "/assets/mtg_icons/loyalty-down.png"
+}
+images {
+  image: "/assets/mtg_icons/loyalty-start.png"
+}
+images {
+  image: "/assets/mtg_icons/loyalty-up.png"
+}
+images {
+  image: "/assets/mtg_icons/loyalty-zero.png"
+}
+images {
+  image: "/assets/mtg_icons/multiple.png"
+}
+images {
+  image: "/assets/mtg_icons/p.png"
+}
+images {
+  image: "/assets/mtg_icons/phenomenon.png"
+}
+images {
+  image: "/assets/mtg_icons/plane.png"
+}
+images {
+  image: "/assets/mtg_icons/planeswalker.png"
+}
+images {
+  image: "/assets/mtg_icons/polis-akros.png"
+}
+images {
+  image: "/assets/mtg_icons/polis-meletis.png"
+}
+images {
+  image: "/assets/mtg_icons/polis-setessa.png"
+}
+images {
+  image: "/assets/mtg_icons/power.png"
+}
+images {
+  image: "/assets/mtg_icons/r.png"
+}
+images {
+  image: "/assets/mtg_icons/rarity.png"
+}
+images {
+  image: "/assets/mtg_icons/s.png"
+}
+images {
+  image: "/assets/mtg_icons/saga.png"
+}
+images {
+  image: "/assets/mtg_icons/scheme.png"
+}
+images {
+  image: "/assets/mtg_icons/sorcery.png"
+}
+images {
+  image: "/assets/mtg_icons/tap-alt.png"
+}
+images {
+  image: "/assets/mtg_icons/tap.png"
+}
+images {
+  image: "/assets/mtg_icons/token.png"
+}
+images {
+  image: "/assets/mtg_icons/toughness.png"
+}
+images {
+  image: "/assets/mtg_icons/u.png"
+}
+images {
+  image: "/assets/mtg_icons/untap.png"
+}
+images {
+  image: "/assets/mtg_icons/vanguard.png"
+}
+images {
+  image: "/assets/mtg_icons/w.png"
+}
+images {
+  image: "/assets/mtg_icons/x.png"
+}
+images {
+  image: "/assets/mtg_icons/y.png"
+}
+images {
+  image: "/assets/mtg_icons/z.png"
+}
+extrude_borders: 2

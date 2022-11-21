@@ -1,0 +1,2 @@
+script: "/main/app/settings/settings.gui_script"
+adjust_reference: ADJUST_REFERENCE_PARENT
