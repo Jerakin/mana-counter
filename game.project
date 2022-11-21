@@ -6,6 +6,9 @@ dependencies#2 = https://github.com/Jerakin/editor-script-align/archive/master.z
 dependencies#3 = https://github.com/Jerakin/editor-script-distribute/archive/master.zip
 dependencies#4 = https://github.com/subsoap/defsave/archive/refs/tags/v1.2.4.zip
 dependencies#5 = https://github.com/andsve/dirtylarry/archive/master.zip
+dependencies#6 = https://github.com/britzl/defold-input/archive/master.zip
+dependencies#7 = https://github.com/britzl/gooey/archive/refs/tags/10.4.1.zip
+dependencies#8 = https://github.com/britzl/gooey-kenney/archive/main.zip
 
 [bootstrap]
 main_collection = /main/main.collectionc
