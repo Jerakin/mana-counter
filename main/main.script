@@ -30,9 +30,9 @@ function on_input(self, action_id, action)
 	if g then
 		if g.swipe_down then
 			monarch.show(hash("settings"))
-			return true
 		end
 	end
+	
 end
 
 

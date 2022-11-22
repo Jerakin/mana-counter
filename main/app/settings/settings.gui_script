@@ -51,7 +51,7 @@ local function set_inital_state(self)
 
     local data = counters.all()
     for i in pairs(data) do
-        theme.checkbox(string.lower(data[i].name)).set_checked(data[i].enabled)
+        theme.checkbox(data[i].name).set_checked(data[i].enabled)
     end
 end
 
@@ -105,22 +105,22 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-    theme.checkbox("white", action_id, action, function(checkbox)
+    theme.checkbox("White", action_id, action, function(checkbox)
         set_visible("White", checkbox.checked)
     end)
-    theme.checkbox("blue", action_id, action, function(checkbox)
+    theme.checkbox("Blue", action_id, action, function(checkbox)
         set_visible("Blue", checkbox.checked)
     end)
-    theme.checkbox("black", action_id, action, function(checkbox)
+    theme.checkbox("Black", action_id, action, function(checkbox)
         set_visible("Black", checkbox.checked)
     end)
-    theme.checkbox("red", action_id, action, function(checkbox)
+    theme.checkbox("Red", action_id, action, function(checkbox)
         set_visible("Red", checkbox.checked)
     end)
-    theme.checkbox("green", action_id, action, function(checkbox)
+    theme.checkbox("Green", action_id, action, function(checkbox)
         set_visible("Green", checkbox.checked)
     end)
-    theme.checkbox("colorless", action_id, action, function(checkbox)
+    theme.checkbox("Colorless", action_id, action, function(checkbox)
         set_visible("Colorless", checkbox.checked)
     end)
     theme.checkbox("negative", action_id, action, function(checkbox)

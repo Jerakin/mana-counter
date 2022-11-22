@@ -330,7 +330,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "white"
+  id: "White"
   parent: "root"
   layer: ""
   inherit_alpha: true
@@ -374,12 +374,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "theme/secondary_box"
-  id: "white/box"
+  id: "White/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "white"
+  parent: "White"
   layer: "below"
   inherit_alpha: true
   slice9 {
@@ -433,7 +433,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "White"
   font: "theme"
-  id: "white/label"
+  id: "White/label"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
@@ -451,7 +451,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "white/box"
+  parent: "White/box"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -497,7 +497,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "blue"
+  id: "Blue"
   parent: "root"
   layer: ""
   inherit_alpha: true
@@ -541,12 +541,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "theme/secondary_box"
-  id: "blue/box"
+  id: "Blue/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "blue"
+  parent: "Blue"
   layer: "below"
   inherit_alpha: true
   slice9 {
@@ -600,7 +600,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Blue"
   font: "theme"
-  id: "blue/label"
+  id: "Blue/label"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
@@ -618,7 +618,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "blue/box"
+  parent: "Blue/box"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -664,7 +664,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "black"
+  id: "Black"
   parent: "root"
   layer: ""
   inherit_alpha: true
@@ -708,12 +708,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "theme/secondary_box"
-  id: "black/box"
+  id: "Black/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "black"
+  parent: "Black"
   layer: "below"
   inherit_alpha: true
   slice9 {
@@ -767,7 +767,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Black"
   font: "theme"
-  id: "black/label"
+  id: "Black/label"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
@@ -785,7 +785,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "black/box"
+  parent: "Black/box"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -831,7 +831,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "red"
+  id: "Red"
   parent: "root"
   layer: ""
   inherit_alpha: true
@@ -875,12 +875,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "theme/secondary_box"
-  id: "red/box"
+  id: "Red/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "red"
+  parent: "Red"
   layer: "below"
   inherit_alpha: true
   slice9 {
@@ -934,7 +934,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Red"
   font: "theme"
-  id: "red/label"
+  id: "Red/label"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
@@ -952,7 +952,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "red/box"
+  parent: "Red/box"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -998,7 +998,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "green"
+  id: "Green"
   parent: "root"
   layer: ""
   inherit_alpha: true
@@ -1042,12 +1042,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "theme/secondary_box"
-  id: "green/box"
+  id: "Green/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "green"
+  parent: "Green"
   layer: "below"
   inherit_alpha: true
   slice9 {
@@ -1101,7 +1101,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Green"
   font: "theme"
-  id: "green/label"
+  id: "Green/label"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
@@ -1119,7 +1119,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "green/box"
+  parent: "Green/box"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -1165,7 +1165,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "colorless"
+  id: "Colorless"
   parent: "root"
   layer: ""
   inherit_alpha: true
@@ -1209,12 +1209,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "theme/secondary_box"
-  id: "colorless/box"
+  id: "Colorless/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "colorless"
+  parent: "Colorless"
   layer: "below"
   inherit_alpha: true
   slice9 {
@@ -1268,7 +1268,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Colorless"
   font: "theme"
-  id: "colorless/label"
+  id: "Colorless/label"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
@@ -1286,7 +1286,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "colorless/box"
+  parent: "Colorless/box"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0

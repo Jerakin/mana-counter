@@ -27,6 +27,7 @@ local function create_counter(options)
 	gui.set_visible(counter["template_counter/remove"], false)
 
 	gui.play_flipbook(counter["template_counter/symbol"], options.texture)
+	data.root = counter["template_counter/box"]
 	data.add = counter["template_counter/add"]
 	data.remove = counter["template_counter/remove"]
 	data.total = counter["template_counter/text_total"]
@@ -34,7 +35,19 @@ local function create_counter(options)
 	return data
 end
 
+local function clear_old_nodes()
+	for name in pairs(M.SCENE_DATA.node_data) do
+		if M.SCENE_DATA.node_data[name].nodes ~= nil then
+			for node in pairs(M.SCENE_DATA.node_data[name].nodes) do
+				gui.delete_node(M.SCENE_DATA.node_data[name].nodes.root)
+			end
+			M.SCENE_DATA.node_data[name] = nil
+		end
+	end
+end
+
 local function setup()
+	clear_old_nodes()
 	local loaded_data = counters.loaded()
 	local width = gui.get_width() / #loaded_data
 	for i in pairs(loaded_data) do
@@ -122,16 +135,18 @@ end
 
 function M.on_input(self, action_id, action)
 	local g = gesture.on_input(self, action_id, action)
+
 	if action.pressed then
+		M.SCENE_DATA.active = {}
 		for name in pairs(M.SCENE_DATA.node_data) do
 			local node_data = M.SCENE_DATA.node_data[name]
-			if gui.pick_node(node_data.nodes.add, action.screen_x, action.screen_y) then
+			if gui.pick_node(node_data.nodes.add, action.x, action.y) then
 				M.SCENE_DATA.active.button = node_data.nodes.add
 				M.SCENE_DATA.active.text = node_data.nodes.text
 				M.SCENE_DATA.active.total = node_data.nodes.total
 				M.SCENE_DATA.active.name = name
 				M.SCENE_DATA.active.mult = 1
-			elseif gui.pick_node(node_data.nodes.remove, action.screen_x, action.screen_y) then
+			elseif gui.pick_node(node_data.nodes.remove, action.x, action.y) then
 				M.SCENE_DATA.active.button = node_data.nodes.remove
 				M.SCENE_DATA.active.total = node_data.nodes.total
 				M.SCENE_DATA.active.text = node_data.nodes.text
@@ -139,12 +154,21 @@ function M.on_input(self, action_id, action)
 				M.SCENE_DATA.active.mult = -1
 			end
 		end
-		if M.SCENE_DATA.active.button then
+		if M.SCENE_DATA.active.button ~= nil then
 			if M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer then
 				timer.cancel(M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer)
 			end
 			gui.set_visible(M.SCENE_DATA.active.button, true)
 		end
+	end
+	if action.released and M.SCENE_DATA.active.button then
+		gui.set_visible(M.SCENE_DATA.active.button, false)
+		local name = M.SCENE_DATA.active.name
+		M.SCENE_DATA.node_data[name].input.timer = timer.delay(2, false, function() 
+			gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total, false)
+			M.SCENE_DATA.node_data[name].input.total = 0
+			M.SCENE_DATA.node_data[name].input.timer = nil
+		end)
 	end
 	if g then
 		if g.tap or g.double_tap then
@@ -156,15 +180,6 @@ function M.on_input(self, action_id, action)
 				increment(10)
 			end
 		end
-	end
-	if action.released and M.SCENE_DATA.active.button then
-		gui.set_visible(M.SCENE_DATA.active.button, false)
-		local name = M.SCENE_DATA.active.name
-		M.SCENE_DATA.node_data[name].input.timer = timer.delay(2, false, function() 
-			gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total, false)
-			M.SCENE_DATA.node_data[name].input.total = 0
-			M.SCENE_DATA.node_data[name].input.timer = nil
-		end)
 	end
 end
 
