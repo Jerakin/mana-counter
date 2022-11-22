@@ -58,7 +58,6 @@ function M.loaded()
 		if data.enabled then
 			local c = M.data[data.name]
 			c.name = data.name
-			
 			table.insert(t, c)
 		end
 	end

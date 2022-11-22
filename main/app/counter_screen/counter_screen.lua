@@ -50,8 +50,8 @@ local function setup()
 			size = vmath.vector3(width, 640, 0),
 			position = vmath.vector3((width*(i-1)+width*0.5), gui.get_height()*0.5, 0),
 		}
-		local counter = create_counter(options)
-		M.SCENE_DATA.node_data[name].nodes = counter
+		local counter_nodes = create_counter(options)
+		M.SCENE_DATA.node_data[name].nodes = counter_nodes
 
 		-- Set the total, keep if we already have a total
 		local old_total = nil
