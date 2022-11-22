@@ -8,6 +8,7 @@ local url = require "utils.url"
 
 local function set_visible(name, visible)
     counters.set_visible(name, visible)
+    msg.post(url.counter, "reload_ui")
 end
 
 local function clear_counters(self)

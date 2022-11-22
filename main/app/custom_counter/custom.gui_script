@@ -48,8 +48,6 @@ local function update_listitem(list, item)
             if gui.pick_node(sprite_node, POSITION.x, POSITION.y) then
                 list.selected_item = nil
                 SELECTED_ICON = item.data[i]
-                gui.play_flipbook(ICON_PREVIEW, SELECTED_ICON)
-                gui.set_visible(ICON_PREVIEW, true)
             end
         end
     end
@@ -58,9 +56,15 @@ end
 local function update_dynamic_icon_list(list)
     for _,item in ipairs(list.items) do
         update_listitem(list, item)
-        gui.play_flipbook(item.nodes[hash(list.id .. "/item_1")], tostring(item.data[1]))
-        gui.play_flipbook(item.nodes[hash(list.id .. "/item_2")], tostring(item.data[2]))
-        gui.play_flipbook(item.nodes[hash(list.id .. "/item_3")], tostring(item.data[3]))
+        for i=1, 3 do
+            local sprite_node = item.nodes[hash("icon_list/item_" .. i)]
+            gui.play_flipbook(sprite_node, item.data[i])
+            if item.data[i] == SELECTED_ICON then
+                gui.set_color(sprite_node, vmath.vector3(0))
+            else
+                gui.set_color(sprite_node, vmath.vector3(1))
+            end
+        end
     end
 end
 
