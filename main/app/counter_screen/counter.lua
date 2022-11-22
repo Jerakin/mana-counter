@@ -9,6 +9,7 @@ M.SCENE_DATA = {}
 M.SCENE_DATA.node_data = {}
 M.SCENE_DATA.input_amount = 1
 M.SCENE_DATA.active = {}
+M.SCENE_DATA.allow_negative = false
 
 local function create_counter(options)
 	local data = {}
@@ -74,6 +75,8 @@ end
 function M.reload()
 	local counter = defsave.get("config", "counter")
 	setup(counter)
+	local settings = defsave.get("config", "settings")
+	M.SCENE_DATA.allow_negative = settings.negative
 end
 
 function M.init(self)
@@ -93,11 +96,17 @@ local function add_operator(num)
 end
 
 local function increment(i)
-	local n = gui.get_text(M.SCENE_DATA.active.text)
+	local n = tonumber(gui.get_text(M.SCENE_DATA.active.text))
 	local add = (M.SCENE_DATA.active.mult * i)
-	local new_n = tonumber(n) + add
+	local capped = false
+	if not M.SCENE_DATA.allow_negative then
+		if n + add < 0 then
+			add = -n
+		end
+	end
+	local new_n = n + add
 	M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.total = M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.total + add
-
+	
 	gui.set_text(M.SCENE_DATA.active.text, new_n)
 	gui.set_text(M.SCENE_DATA.active.total, add_operator(M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.total))
 	if M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.total == 0 then
@@ -149,7 +158,6 @@ function M.on_input(self, action_id, action)
 		end
 
 		if g.repeated then
-			print(g.repeated)
 			if action.repeated then
 				increment(10)
 			end
@@ -164,54 +172,6 @@ function M.on_input(self, action_id, action)
 			M.SCENE_DATA.node_data[name].input.timer = nil
 		end)
 	end
-
-	--[[
-	if action_id == hash("touch") then
-		if action.pressed then
-			M.SCENE_DATA.repeated = false
-			M.SCENE_DATA.active = {}
-		end
-
-		for name in pairs(M.SCENE_DATA.node_data) do
-			local node_data = M.SCENE_DATA.node_data[name]
-			if action.pressed then
-				if gui.pick_node(node_data.nodes.add, action.x, action.y) then
-					M.SCENE_DATA.active.button = node_data.nodes.add
-					M.SCENE_DATA.active.text = node_data.nodes.text
-					M.SCENE_DATA.active.total = node_data.nodes.total
-					M.SCENE_DATA.active.name = name
-					M.SCENE_DATA.active.mult = 1
-				elseif gui.pick_node(node_data.nodes.remove, action.x, action.y) then
-					M.SCENE_DATA.active.button = node_data.nodes.remove
-					M.SCENE_DATA.active.total = node_data.nodes.total
-					M.SCENE_DATA.active.text = node_data.nodes.text
-					M.SCENE_DATA.active.name = name
-					M.SCENE_DATA.active.mult = -1
-				end
-				if M.SCENE_DATA.active.button then
-					if M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer then
-						timer.cancel(M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer)
-					end
-					gui.set_visible(M.SCENE_DATA.active.button, true)
-				end
-			end
-		end
-		if not action.pressed and action.repeated then
-			M.SCENE_DATA.repeated = true
-			increment(10)
-		elseif action.released and M.SCENE_DATA.active.button then
-			if not M.SCENE_DATA.repeated then
-				increment(1)
-			end
-			gui.set_visible(M.SCENE_DATA.active.button, false)
-			local name = M.SCENE_DATA.active.name
-			M.SCENE_DATA.node_data[name].input.timer = timer.delay(2, false, function() 
-				gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total, false)
-				M.SCENE_DATA.node_data[name].input.total = 0
-				M.SCENE_DATA.node_data[name].input.timer = nil
-			end)
-		end
-	end--]]
 end
 
 return M

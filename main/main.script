@@ -16,7 +16,8 @@ function init(self)
 			{name="Red", enabled=true}, 
 			{name="Green", enabled=true},
 			{name="Colorless", enabled=false}
-		}
+		},
+		settings={negative=false}
 	}
 	defsave.load("config")
 end
