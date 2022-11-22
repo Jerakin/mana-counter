@@ -13,33 +13,6 @@ local SELECTED_ICON = nil
 local SELECTED_COLOR = nil
 local ICON_PREVIEW = nil
 
-local function update_list()
-end
-
-function init(self)
-    msg.post(".", "acquire_input_focus")
-    url.set("custom", msg.url("."))
-    gui.set_render_order(2)
-    ICON_PREVIEW = gui.get_node("selected_item")
-    
-    self.icon_data = {}
-    local t = {}
-    for i in pairs(constants.icons) do
-        if #t == 3 then
-            table.insert(self.icon_data, t)
-            t = {}
-        end
-        table.insert(t, constants.icons[i])
-    end
-end
-
-function final(self)
-end
-
-function update(self, dt)
-end
-
-
 local function update_listitem(list, item)
     local pos = gui.get_position(item.root)
     if item == list.selected_item then
@@ -67,6 +40,25 @@ local function update_dynamic_icon_list(list)
         end
     end
 end
+function init(self)
+    msg.post(".", "acquire_input_focus")
+    url.set("custom", msg.url("."))
+    gui.set_render_order(2)
+    ICON_PREVIEW = gui.get_node("selected_item")
+    
+    self.icon_data = {}
+    local t = {}
+    for i in pairs(constants.icons) do
+        if #t == 3 then
+            table.insert(self.icon_data, t)
+            t = {}
+        end
+        table.insert(t, constants.icons[i])
+    end
+
+    update_dynamic_icon_list(theme.dynamic_icon_list("icon_list", "scroll", self.icon_data, nil, {x=0, y=0}))
+end
+
 
 function on_message(self, message_id, message, sender)
     self.transition.handle(message_id, message, sender)
