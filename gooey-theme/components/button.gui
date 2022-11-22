@@ -34,7 +34,7 @@ nodes {
   }
   size {
     x: 190.0
-    y: 49.0
+    y: 45.0
     z: 0.0
     w: 1.0
   }
@@ -46,7 +46,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "theme/button04"
+  texture: "theme/button"
   id: "bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -91,14 +91,14 @@ nodes {
   }
   size {
     x: 200.0
-    y: 100.0
+    y: 40.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.7882353
+    y: 0.8156863
+    z: 0.85882354
     w: 1.0
   }
   type: TYPE_TEXT

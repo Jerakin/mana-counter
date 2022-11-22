@@ -4,27 +4,24 @@ local utils = require "gooey.themes.utils"
 
 local M = gooey.create_theme()
 
-local INPUT_FOCUS = hash("button05")
-local INPUT = hash("button03")
+local INPUT_FOCUS = hash("button_pressed")
+local INPUT = hash("button")
 
 
-local BUTTON_PRESSED = hash("button05")
-local BUTTON = hash("button04")
+local BUTTON_PRESSED = hash("button_pressed")
+local BUTTON = hash("button")
 
-local CLOSE_BUTTON_PRESSED = hash("button12")
-local CLOSE_BUTTON = hash("button11")
+local LISTITEM_SELECTED = hash("button")
+local LISTITEM_PRESSED = hash("button")
+local LISTITEM = hash("button_pressed")
 
-local LISTITEM_SELECTED = hash("button03")
-local LISTITEM_PRESSED = hash("button03")
-local LISTITEM = hash("blue_button04")
+--local CHECKBOX_PRESSED = hash("secondary_boxCross")
+local CHECKBOX_CHECKED = hash("checkbox_checked")
+local CHECKBOX = hash("checkbox")
 
-local CHECKBOX_PRESSED = hash("secondary_boxCross")
-local CHECKBOX_CHECKED = hash("boxCross")
-local CHECKBOX = hash("secondary_box")
-
-local RADIO_PRESSED = hash("secondary_boxTick")
-local RADIO_SELECTED = hash("boxTick")
-local RADIO = hash("secondary_circle")
+local RADIO_PRESSED = hash("checkbox_checked")
+local RADIO_SELECTED = hash("checkbox_checked")
+local RADIO = hash("checkbox")
 
 
 local dynamic_list_position = {}
@@ -44,24 +41,14 @@ function M.button(node_id, action_id, action, fn)
 	return gooey.button(node_id .. "/bg", action_id, action, fn, refresh_button)
 end
 
-local function refresh_close_button(button)
-	if button.pressed then
-		gui.play_flipbook(button.node, CLOSE_BUTTON_PRESSED)
-	else
-		gui.play_flipbook(button.node, CLOSE_BUTTON)
-	end
-end
-function M.close_button(node_id, action_id, action, fn)
-	return gooey.button(node_id .. "/bg", action_id, action, fn, refresh_close_button)
-end
-
 local function refresh_checkbox(checkbox)
 	if checkbox.pressed_now or checkbox.released_now then
 		utils.shake(checkbox.node, vmath.vector3(1))
 	end
-	if checkbox.pressed then
+	--[[if checkbox.pressed then
 		gui.play_flipbook(checkbox.node, CHECKBOX_PRESSED)
-	elseif checkbox.checked then
+	else--]]
+	if checkbox.checked then
 		gui.play_flipbook(checkbox.node, CHECKBOX_CHECKED)
 	else
 		gui.play_flipbook(checkbox.node, CHECKBOX)

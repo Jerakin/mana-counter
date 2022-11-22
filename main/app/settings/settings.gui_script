@@ -26,8 +26,8 @@ local function add_counters(self)
         if data.is_default == nil then
             local pos = gui.get_position(self.template)
             local pos_del = gui.get_position(self.template_delete)
-            pos.y = pos.y - 88 * index
-            pos_del.y = pos_del.y - 88 * index
+            pos.y = pos.y - 71.4 * index
+            pos_del.y = pos_del.y - 71.4 * index
 
             local tree_del = gui.clone_tree(self.template_delete)
             gui.set_position(tree_del["template_delete/bg"], pos_del)
@@ -146,7 +146,7 @@ function on_input(self, action_id, action)
             monarch.show("custom")
         end)
     end 
-    theme.close_button("close", action_id, action, function()
+    theme.button("close", action_id, action, function()
         msg.post(url.counter, "reload_ui")
         monarch.back()
     end)

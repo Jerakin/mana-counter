@@ -37,8 +37,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 420.0
-    y: 550.0
+    x: 320.0
+    y: 430.0
     z: 0.0
     w: 1.0
   }
@@ -72,12 +72,12 @@ nodes {
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
 }
 nodes {
   position {
     x: 0.0
-    y: -10.0
+    y: -6.0
     z: 0.0
     w: 1.0
   }
@@ -94,8 +94,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 420.0
-    y: 530.0
+    x: 320.0
+    y: 420.0
     z: 0.0
     w: 1.0
   }
@@ -152,7 +152,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 400.0
+    x: 300.0
     y: 90.0
     z: 0.0
     w: 1.0
@@ -175,10 +175,10 @@ nodes {
   layer: "below"
   inherit_alpha: true
   slice9 {
-    x: 10.0
-    y: 10.0
-    z: 10.0
-    w: 11.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -192,7 +192,7 @@ nodes {
 }
 nodes {
   position {
-    x: -140.0
+    x: -105.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -308,7 +308,7 @@ nodes {
 }
 nodes {
   position {
-    x: 140.0
+    x: 105.0
     y: 0.0
     z: 0.0
     w: 1.0

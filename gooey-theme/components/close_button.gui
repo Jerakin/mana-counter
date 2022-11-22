@@ -46,7 +46,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "theme/button11"
+  texture: "theme/button"
   id: "bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -65,10 +65,10 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
 }
 nodes {
   position {

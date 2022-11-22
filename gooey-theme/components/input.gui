@@ -33,7 +33,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 400.0
+    x: 250.0
     y: 60.0
     z: 0.0
     w: 1.0
@@ -46,7 +46,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "theme/button10"
+  texture: "theme/button"
   id: "bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -72,7 +72,7 @@ nodes {
 }
 nodes {
   position {
-    x: -188.839
+    x: -119.839
     y: 0.0
     z: 0.0
     w: 1.0
@@ -90,8 +90,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 240.0
+    y: 45.0
     z: 0.0
     w: 1.0
   }
@@ -157,7 +157,7 @@ nodes {
   }
   size {
     x: 2.0
-    y: 20.0
+    y: 40.0
     z: 0.0
     w: 1.0
   }

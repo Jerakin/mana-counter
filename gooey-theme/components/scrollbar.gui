@@ -29,7 +29,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 4.0
+    x: 14.0
     y: 300.0
     z: 0.0
     w: 1.0
@@ -42,7 +42,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "theme/secondary_sliderVertical"
+  texture: "theme/slider_vertical"
   id: "bounds"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -52,9 +52,9 @@ nodes {
   inherit_alpha: true
   slice9 {
     x: 0.0
-    y: 0.0
+    y: 8.0
     z: 0.0
-    w: 0.0
+    w: 8.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -69,7 +69,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 298.0
+    y: 282.0
     z: 0.0
     w: 1.0
   }
@@ -86,7 +86,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 36.0
+    x: 14.0
     y: 36.0
     z: 0.0
     w: 1.0
@@ -99,7 +99,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "theme/boxTick"
+  texture: "theme/handle"
   id: "handle"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -109,9 +109,9 @@ nodes {
   layer: "below"
   inherit_alpha: true
   slice9 {
-    x: 6.0
+    x: 0.0
     y: 6.0
-    z: 6.0
+    z: 0.0
     w: 10.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -119,7 +119,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
