@@ -3,6 +3,10 @@ fonts {
   name: "main"
   font: "/assets/font/main.font"
 }
+fonts {
+  name: "text"
+  font: "/assets/font/text.font"
+}
 textures {
   name: "mtg_icons"
   texture: "/assets/mtg_icons.atlas"
@@ -609,8 +613,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 60.0
+    x: 100.0
+    y: 30.0
     z: 0.0
     w: 1.0
   }
@@ -623,7 +627,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Name"
-  font: "main"
+  font: "text"
   id: "name_lbl"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -675,8 +679,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 60.0
+    x: 100.0
+    y: 30.0
     z: 0.0
     w: 1.0
   }
@@ -689,7 +693,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Icon"
-  font: "main"
+  font: "text"
   id: "icon_lbl"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -741,8 +745,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 60.0
+    x: 100.0
+    y: 30.0
     z: 0.0
     w: 1.0
   }
@@ -755,7 +759,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Color"
-  font: "main"
+  font: "text"
   id: "color_lbl"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

@@ -84,11 +84,14 @@ function on_input(self, action_id, action)
 
     theme.button("add", action_id, action, function()
         local icon = SELECTED_ICON
-        local color = gui.get_color(SELECTED_COLOR)
+        
         local name = gui.get_text(gui.get_node("name/text"))
-        counters.add(name, {color=color, texture=icon})
-        msg.post(url.settings, "reload_ui")
-        monarch.back()
+        if icon ~= nil and SELECTED_COLOR ~= nil and #name >=3 then
+            local color = gui.get_color(SELECTED_COLOR)
+            counters.add(name, {color=color, texture=icon})
+            msg.post(url.settings, "reload_ui")
+            monarch.back()
+        end
     end)
     
     theme.input("name", gui.KEYBOARD_TYPE_DEFAULT, action_id, action)

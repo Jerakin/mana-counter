@@ -1,7 +1,7 @@
 script: "/main/app/settings/settings.gui_script"
 fonts {
   name: "main"
-  font: "/assets/font/main.font"
+  font: "/assets/font/text.font"
 }
 background_color {
   x: 0.0
@@ -1969,7 +1969,7 @@ nodes {
 nodes {
   position {
     x: 9.0
-    y: 606.0
+    y: 590.0
     z: 0.0
     w: 1.0
   }
@@ -2035,7 +2035,7 @@ nodes {
 nodes {
   position {
     x: 403.0
-    y: 606.0
+    y: 590.0
     z: 0.0
     w: 1.0
   }
@@ -2101,7 +2101,7 @@ nodes {
 nodes {
   position {
     x: 769.0
-    y: 606.0
+    y: 590.0
     z: 0.0
     w: 1.0
   }
