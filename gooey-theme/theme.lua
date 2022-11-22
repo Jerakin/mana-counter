@@ -27,6 +27,7 @@ local RADIO_SELECTED = hash("boxTick")
 local RADIO = hash("secondary_circle")
 
 
+local dynamic_list_position = {}
 
 
 local function refresh_button(button)
@@ -170,6 +171,26 @@ local function update_dynamic_list(list)
 end
 function M.dynamic_list(list_id, scrollbar_id, data, action_id, action, config, fn)
 	local list = gooey.dynamic_list(list_id, list_id .. "/stencil", list_id .. "/listitem_bg", data, action_id, action, config, fn, update_dynamic_list)
+	if scrollbar_id then
+		-- scrolled in list -> update scrollbar
+		if list.scrolling then
+			gooey.vertical_scrollbar(scrollbar_id .. "/handle", scrollbar_id .. "/bounds").scroll_to(0, list.scroll.y)
+		else
+			-- scroll using scrollbar -> scroll list
+			gooey.vertical_scrollbar(scrollbar_id .. "/handle", scrollbar_id .. "/bounds", action_id, action, function(scrollbar)
+				gooey.dynamic_list(list_id, list_id .. "/stencil", list_id .. "/listitem_bg", data).scroll_to(0, scrollbar.scroll.y)
+			end)
+		end
+	end
+
+	return list
+end
+
+
+function M.dynamic_icon_list(list_id, scrollbar_id, data, action_id, action, config, fn, list_update)
+	dynamic_list_position.x = action.x
+	dynamic_list_position.y = action.y
+	local list = gooey.dynamic_list(list_id, list_id .. "/stencil", list_id .. "/listitem_bg", data, action_id, action, config, fn, list_update)
 	if scrollbar_id then
 		-- scrolled in list -> update scrollbar
 		if list.scrolling then

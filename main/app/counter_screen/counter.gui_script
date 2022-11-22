@@ -1,4 +1,4 @@
-local counter = require "main.app.counter_screen.counter"
+local counter = require "main.app.counter_screen.counter_screen"
 local url = require "utils.url"
 
 function init(self)

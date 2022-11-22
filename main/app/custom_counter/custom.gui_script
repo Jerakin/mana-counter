@@ -1,0 +1,110 @@
+local gooey = require "gooey.gooey"
+local monarch = require "monarch.monarch"
+local transitions = require "monarch.transitions.gui"
+local theme = require "gooey-theme.theme"
+local defsave = require("defsave.defsave")
+local url = require "utils.url"
+local constants = require "main.app.constants"
+local gesture = require "in.gesture"
+
+local POSITION = {}
+local SELECTED_ICON = nil
+local SELECTED_COLOR = nil
+local ICON_PREVIEW = nil
+
+local function update_list()
+end
+
+function init(self)
+    msg.post(".", "acquire_input_focus")
+    url.set("custom", msg.url("."))
+    gui.set_render_order(2)
+    ICON_PREVIEW = gui.get_node("selected_item")
+    
+    self.icon_data = {}
+    local t = {}
+    for i in pairs(constants.icons) do
+        if #t == 3 then
+            table.insert(self.icon_data, t)
+            t = {}
+        end
+        table.insert(t, constants.icons[i])
+    end
+end
+
+function final(self)
+end
+
+function update(self, dt)
+end
+
+
+local function update_listitem(list, item)
+    local pos = gui.get_position(item.root)
+    if item == list.selected_item then
+        for i=1, 3 do
+            local sprite_node = item.nodes[hash("icon_list/item_" .. i)]
+            if gui.pick_node(sprite_node, POSITION.x, POSITION.y) then
+                list.selected_item = nil
+                SELECTED_ICON = item.data[i]
+                gui.play_flipbook(ICON_PREVIEW, SELECTED_ICON)
+                gui.set_visible(ICON_PREVIEW, true)
+            end
+        end
+    end
+end
+
+local function update_dynamic_icon_list(list)
+    for _,item in ipairs(list.items) do
+        update_listitem(list, item)
+        gui.play_flipbook(item.nodes[hash(list.id .. "/item_1")], tostring(item.data[1]))
+        gui.play_flipbook(item.nodes[hash(list.id .. "/item_2")], tostring(item.data[2]))
+        gui.play_flipbook(item.nodes[hash(list.id .. "/item_3")], tostring(item.data[3]))
+    end
+end
+
+function on_message(self, message_id, message, sender)
+    self.transition.handle(message_id, message, sender)
+    -- you can also check when a transition has completed:
+    if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
+        print("Show in done!")
+    end
+end
+
+
+function on_input(self, action_id, action)
+    POSITION.x = action.x
+    POSITION.y = action.y
+    theme.dynamic_icon_list("icon_list", "scroll", self.icon_data, action_id, action, {}, function()end, update_dynamic_icon_list)
+    
+    theme.close_button("close", action_id, action, function()
+        monarch.back()
+    end)
+
+    theme.button("add", action_id, action, function()
+        msg.post(url.settings, "reload_ui")
+        monarch.back()
+    end)
+    
+    theme.input("name", gui.KEYBOARD_TYPE_DEFAULT, action_id, action)
+    local g = gesture.on_input(self, action_id, action)
+    if g then
+        if g.tap then
+            for i=1, 16 do
+                local color_node = gui.get_node(hash("color_" .. i))
+                if gui.pick_node(color_node, action.x, action.y) then
+                    if SELECTED_COLOR ~= nil then
+                        gui.set_scale(SELECTED_COLOR, vmath.vector3(1))
+                    end
+                    SELECTED_COLOR = color_node
+                    
+                    gui.set_scale(color_node, vmath.vector3(1.25))
+                end
+            end
+        end
+    end
+    return true
+end
+
+function on_reload(self)
+end

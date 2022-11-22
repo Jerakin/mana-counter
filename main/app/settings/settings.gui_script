@@ -45,7 +45,7 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-    self.transition.handle(message_id, message, sender)
+    --self.transition.handle(message_id, message, sender)
     -- you can also check when a transition has completed:
     if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
         print("Show in done!")
@@ -93,6 +93,9 @@ function on_input(self, action_id, action)
         settings.negative = checkbox.checked
         defsave.set("config", "settings", settings)
         defsave.save("config")
+    end)
+    theme.button("add", action_id, action, function()
+        monarch.show("custom")
     end)
     theme.close_button("close", action_id, action, function()
         msg.post(url.counter, "reload_ui")
