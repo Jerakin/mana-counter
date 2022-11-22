@@ -100,6 +100,16 @@ function M.delete(name)
 	end
 end
 
+function M.number_of_custom()
+	local n = 0
+	for name in pairs(M.data) do
+		if M.data[name].is_default == nil then
+			n = n + 1
+		end
+	end
+	return n
+end
+
 function M.load()
 	M.counter = defsave.get("config", "counter")
 	local extra = defsave.get("config", "extra")
