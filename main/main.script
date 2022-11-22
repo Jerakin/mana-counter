@@ -1,6 +1,5 @@
 local monarch = require "monarch.monarch"
 local gesture = require "in.gesture"
-local dirtylarry = require "dirtylarry.dirtylarry"
 local gooey = require "gooey.gooey"
 local defsave = require("defsave.defsave")
 

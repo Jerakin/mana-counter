@@ -1,6 +1,7 @@
 local monarch = require "monarch.monarch"
 local constants = require "main.app.constants"
 local defsave = require("defsave.defsave")
+local gesture = require "in.gesture"
 
 local M = {}
 
@@ -102,6 +103,55 @@ local function toggle_button(node, visible)
 end
 
 function M.on_input(self, action_id, action)
+	local g = gesture.on_input(self, action_id, action)
+	if g then
+		if action.pressed then
+			for name in pairs(M.SCENE_DATA.node_data) do
+				local node_data = M.SCENE_DATA.node_data[name]
+				if gui.pick_node(node_data.nodes.add, action.x, action.y) then
+					M.SCENE_DATA.active.button = node_data.nodes.add
+					M.SCENE_DATA.active.text = node_data.nodes.text
+					M.SCENE_DATA.active.total = node_data.nodes.total
+					M.SCENE_DATA.active.name = name
+					M.SCENE_DATA.active.mult = 1
+				elseif gui.pick_node(node_data.nodes.remove, action.x, action.y) then
+					M.SCENE_DATA.active.button = node_data.nodes.remove
+					M.SCENE_DATA.active.total = node_data.nodes.total
+					M.SCENE_DATA.active.text = node_data.nodes.text
+					M.SCENE_DATA.active.name = name
+					M.SCENE_DATA.active.mult = -1
+				end
+			end
+			if M.SCENE_DATA.active.button then
+				if M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer then
+					timer.cancel(M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer)
+				end
+				gui.set_visible(M.SCENE_DATA.active.button, true)
+			end
+			
+		end
+		if g.tap or g.double_tap then
+			increment(1)
+		end
+
+		if g.repeated then
+			print(g.repeated)
+			if action.repeated then
+				increment(10)
+			end
+		end
+	end
+	if action.released and M.SCENE_DATA.active.button then
+		gui.set_visible(M.SCENE_DATA.active.button, false)
+		local name = M.SCENE_DATA.active.name
+		M.SCENE_DATA.node_data[name].input.timer = timer.delay(2, false, function() 
+			gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total, false)
+			M.SCENE_DATA.node_data[name].input.total = 0
+			M.SCENE_DATA.node_data[name].input.timer = nil
+		end)
+	end
+
+	--[[
 	if action_id == hash("touch") then
 		if action.pressed then
 			M.SCENE_DATA.repeated = false
@@ -147,7 +197,7 @@ function M.on_input(self, action_id, action)
 				M.SCENE_DATA.node_data[name].input.timer = nil
 			end)
 		end
-	end
+	end--]]
 end
 
 return M
