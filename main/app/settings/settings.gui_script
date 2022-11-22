@@ -1,12 +1,12 @@
 local gooey = require "gooey.gooey"
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
-local kenneyblue = require "gooey-kenney.kenneyblue"
+local theme = require "gooey-theme.theme"
 local defsave = require("defsave.defsave")
 
 local function set_inital_state(data)
     for i in pairs(data) do
-        kenneyblue.checkbox(string.lower(data[i].name)).set_checked(data[i].enabled)
+        theme.checkbox(string.lower(data[i].name)).set_checked(data[i].enabled)
     end
 end
 
@@ -53,25 +53,25 @@ local function set_visible(name, visible)
 end
 
 function on_input(self, action_id, action)
-    kenneyblue.checkbox("white", action_id, action, function(checkbox)
+    theme.checkbox("white", action_id, action, function(checkbox)
         set_visible("White", checkbox.checked)
     end)
-    kenneyblue.checkbox("blue", action_id, action, function(checkbox)
+    theme.checkbox("blue", action_id, action, function(checkbox)
         set_visible("Blue", checkbox.checked)
     end)
-    kenneyblue.checkbox("black", action_id, action, function(checkbox)
+    theme.checkbox("black", action_id, action, function(checkbox)
         set_visible("Black", checkbox.checked)
     end)
-    kenneyblue.checkbox("red", action_id, action, function(checkbox)
+    theme.checkbox("red", action_id, action, function(checkbox)
         set_visible("Red", checkbox.checked)
     end)
-    kenneyblue.checkbox("green", action_id, action, function(checkbox)
+    theme.checkbox("green", action_id, action, function(checkbox)
         set_visible("Green", checkbox.checked)
     end)
-    kenneyblue.checkbox("colorless", action_id, action, function(checkbox)
+    theme.checkbox("colorless", action_id, action, function(checkbox)
         set_visible("Colorless", checkbox.checked)
     end)
-    kenneyblue.button("add", action_id, action, function ()
+    theme.close_button("close", action_id, action, function ()
         monarch.back()
     end)
     return true
