@@ -123,6 +123,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
+  parent: "box"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0

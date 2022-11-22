@@ -6,6 +6,7 @@ local defsave = require("defsave.defsave")
 local url = require "utils.url"
 local constants = require "main.app.constants"
 local gesture = require "in.gesture"
+local counters = require "main.app.counters"
 
 local POSITION = {}
 local SELECTED_ICON = nil
@@ -82,6 +83,10 @@ function on_input(self, action_id, action)
     end)
 
     theme.button("add", action_id, action, function()
+        local icon = SELECTED_ICON
+        local color = gui.get_color(SELECTED_COLOR)
+        local name = gui.get_text(gui.get_node("name/text"))
+        counters.add(name, {color=color, texture=icon})
         msg.post(url.settings, "reload_ui")
         monarch.back()
     end)

@@ -2,6 +2,7 @@ local monarch = require "monarch.monarch"
 local constants = require "main.app.constants"
 local defsave = require("defsave.defsave")
 local gesture = require "in.gesture"
+local counters = require "main.app.counters"
 
 local M = {}
 
@@ -33,59 +34,53 @@ local function create_counter(options)
 	return data
 end
 
-local function setup(data)
-	local n = 0
-	for i in pairs(data) do
-		if data[i].enabled then
-			n = n + 1
+local function setup()
+	local loaded_data = counters.loaded()
+	local width = gui.get_width() / #loaded_data
+	for i in pairs(loaded_data) do
+		local data = loaded_data[i]
+		local name = data.name
+		
+		if M.SCENE_DATA.node_data[name] == nil then
+			M.SCENE_DATA.node_data[name] = {}
 		end
-	end
-	local width = gui.get_width() / n
-	local index = 0
-	for i in pairs(data) do
-		if data[i].enabled then
-			index = index + 1
-			local name = data[i].name
-			if M.SCENE_DATA.node_data[name] == nil then
-				M.SCENE_DATA.node_data[name] = {}
-			end
-			local data = constants[name]
-			local options = {
-				name=name,
-				color=data.color, 
-				texture=data.texture, 
-				size = vmath.vector3(width, 640, 0),
-				position = vmath.vector3((width*(index-1)+width*0.5), gui.get_height()*0.5, 0),
-			}
-			local counter = create_counter(options)
-			M.SCENE_DATA.node_data[name].nodes = counter
+		local options = {
+			color=data.color, 
+			texture=data.texture, 
+			size = vmath.vector3(width, 640, 0),
+			position = vmath.vector3((width*(i-1)+width*0.5), gui.get_height()*0.5, 0),
+		}
+		local counter = create_counter(options)
+		M.SCENE_DATA.node_data[name].nodes = counter
 
-			-- Set the total, keep if we already have a total
-			local old_total = nil
-			if M.SCENE_DATA.node_data[name].input ~= nil then
-				old_total = M.SCENE_DATA.node_data[name].input.total
-			end
-			
-			local t = old_total ~= nil and old_total or 0
-			M.SCENE_DATA.node_data[name].input = {total=t}
+		-- Set the total, keep if we already have a total
+		local old_total = nil
+		if M.SCENE_DATA.node_data[name].input ~= nil then
+			old_total = M.SCENE_DATA.node_data[name].input.total
 		end
+		
+		local t = old_total ~= nil and old_total or 0
+		M.SCENE_DATA.node_data[name].input = {total=t}
 	end
 end
 
 function M.reload()
-	local counter = defsave.get("config", "counter")
-	setup(counter)
 	local settings = defsave.get("config", "settings")
 	M.SCENE_DATA.allow_negative = settings.negative
+	setup()
 end
 
 function M.init(self)
-	local counter = defsave.get("config", "counter")
 	msg.post(".", "acquire_input_focus")
+	
+	local settings = defsave.get("config", "settings")
+	M.SCENE_DATA.allow_negative = settings.negative
+	
 	M.SCENE_DATA.template = gui.get_node("template_counter/box")
 	M.SCENE_DATA.root = gui.get_node("template_counter/box")
-	setup(counter)
 	gui.set_visible(M.SCENE_DATA.template, false)
+	
+	setup()
 end
 
 local function add_operator(num)

@@ -2,6 +2,7 @@ local monarch = require "monarch.monarch"
 local gesture = require "in.gesture"
 local gooey = require "gooey.gooey"
 local defsave = require("defsave.defsave")
+local counters = require "main.app.counters"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -20,6 +21,7 @@ function init(self)
 		settings={negative=false}
 	}
 	defsave.load("config")
+	counters.load()
 end
 
 
@@ -36,4 +38,8 @@ end
 
 function on_message(self, message_id, message, sender)
 	monarch.show(hash("main"))
+end
+
+function final(self)
+	counters.save()
 end
