@@ -1564,7 +1564,7 @@ nodes {
 nodes {
   position {
     x: -3.0
-    y: 4.0
+    y: 14.0
     z: 0.0
     w: 1.0
   }
@@ -1582,7 +1582,7 @@ nodes {
   }
   size {
     x: 4.0
-    y: 530.0
+    y: 510.0
     z: 0.0
     w: 1.0
   }
@@ -1601,7 +1601,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "scroll"
-  layer: ""
+  layer: "below"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1615,6 +1615,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 1
   overridden_fields: 4
+  overridden_fields: 20
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
@@ -1624,7 +1625,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 528.0
+    y: 485.0
     z: 0.0
     w: 1.0
   }
@@ -1641,8 +1642,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 36.0
-    y: 36.0
+    x: 20.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -1654,7 +1655,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "theme/boxTick"
+  texture: "theme/button08"
   id: "scroll/handle"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1674,8 +1675,11 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   overridden_fields: 1
+  overridden_fields: 4
+  overridden_fields: 9
+  overridden_fields: 38
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true

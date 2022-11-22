@@ -360,8 +360,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 38.0
-    y: 36.0
+    x: 57.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -383,17 +383,17 @@ nodes {
   layer: "below"
   inherit_alpha: true
   slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -527,8 +527,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 38.0
-    y: 36.0
+    x: 57.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -550,17 +550,17 @@ nodes {
   layer: "below"
   inherit_alpha: true
   slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -694,8 +694,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 38.0
-    y: 36.0
+    x: 57.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -717,17 +717,17 @@ nodes {
   layer: "below"
   inherit_alpha: true
   slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -861,8 +861,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 38.0
-    y: 36.0
+    x: 57.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -884,17 +884,17 @@ nodes {
   layer: "below"
   inherit_alpha: true
   slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -1028,8 +1028,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 38.0
-    y: 36.0
+    x: 57.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -1051,17 +1051,17 @@ nodes {
   layer: "below"
   inherit_alpha: true
   slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -1195,8 +1195,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 38.0
-    y: 36.0
+    x: 57.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -1218,17 +1218,17 @@ nodes {
   layer: "below"
   inherit_alpha: true
   slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -1362,8 +1362,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 38.0
-    y: 36.0
+    x: 57.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -1385,17 +1385,17 @@ nodes {
   layer: "below"
   inherit_alpha: true
   slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -1861,8 +1861,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 38.0
-    y: 36.0
+    x: 57.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -1884,17 +1884,17 @@ nodes {
   layer: "below"
   inherit_alpha: true
   slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
