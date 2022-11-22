@@ -91,6 +91,13 @@ end
 
 function M.delete(name)
 	M.data[name] = nil
+	for i in pairs(M.counter) do
+		local data = M.counter[i]
+		if data.name == name then
+			table.remove(M.counter, i)
+			return true
+		end
+	end
 end
 
 function M.load()

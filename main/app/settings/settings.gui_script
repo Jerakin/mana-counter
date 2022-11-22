@@ -13,6 +13,7 @@ end
 local function clear_counters(self)
     for i in pairs(self.additional_counters) do
         gui.delete_node(self.additional_counters[i].node)
+        gui.delete_node(self.additional_counters[i].delete)
     end
     self.additional_counters = {}
 end
@@ -21,16 +22,23 @@ local function add_counters(self)
     local all_data = counters.all()
     local index = 0
     local pos = gui.get_position(self.template)
+    local pos_del = gui.get_position(self.template_delete)
     for i in pairs(all_data) do
         pos.y = pos.y - 88 * index
+        pos_del.y = pos_del.y - 88 * index
         local data = all_data[i]
         if data.is_default == nil then
+            local tree_del = gui.clone_tree(self.template_delete)
+            gui.set_position(tree_del["template_delete/bg"], pos_del)
+            gui.set_enabled(tree_del["template_delete/bg"], true)
+            gui.set_id(tree_del["template_delete/bg"], data.name .. "_delete/bg")
+            
             local tree = gui.clone_tree(self.template)
             gui.set_enabled(tree["template/box"], true)
             gui.set_position(tree["template/box"], pos)
             gui.set_text(tree["template/label"], data.name)
             gui.set_id(tree["template/box"], data.name .. "/box")
-            table.insert(self.additional_counters, {name=data.name, node = tree["template/box"]})
+            table.insert(self.additional_counters, {name=data.name, node = tree["template/box"], delete=tree_del["template_delete/bg"]})
             index = index + 1
         end
     end
@@ -53,7 +61,11 @@ function init(self)
 
 
     self.template = gui.get_node("template/box")
+    self.template_delete = gui.get_node("template_delete/bg")
+    
     gui.set_enabled(self.template, false)
+    gui.set_enabled(self.template_delete, false)
+    
     self.additional_counters = {}
     local settings = defsave.get("config", "settings")
     --[[if settings == nil then
@@ -119,9 +131,15 @@ function on_input(self, action_id, action)
 
     for i in pairs(self.additional_counters) do
         local data = self.additional_counters[i]
-        theme.checkbox(data.name, action_id, action,function(checkbox)
-            set_visible(data.name, checkbox.checked)
-        end)
+        if data ~= nil then
+            theme.checkbox(data.name, action_id, action,function(checkbox)
+                set_visible(data.name, checkbox.checked)
+            end)
+            theme.button(data.name .. "_delete", action_id, action, function(button)
+                counters.delete(data.name)
+                set_inital_state(self)
+            end)
+        end
     end
     
     theme.button("add", action_id, action, function()
