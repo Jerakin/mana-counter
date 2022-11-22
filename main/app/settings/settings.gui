@@ -199,7 +199,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "CHECKBOX"
+  text: "White"
   font: "theme"
   id: "white/label"
   xanchor: XANCHOR_NONE
@@ -225,6 +225,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -365,7 +366,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "CHECKBOX"
+  text: "Blue"
   font: "theme"
   id: "blue/label"
   xanchor: XANCHOR_NONE
@@ -391,6 +392,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -531,7 +533,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "CHECKBOX"
+  text: "Black"
   font: "theme"
   id: "black/label"
   xanchor: XANCHOR_NONE
@@ -557,6 +559,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -697,7 +700,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "CHECKBOX"
+  text: "Red"
   font: "theme"
   id: "red/label"
   xanchor: XANCHOR_NONE
@@ -723,6 +726,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -863,7 +867,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "CHECKBOX"
+  text: "Green"
   font: "theme"
   id: "green/label"
   xanchor: XANCHOR_NONE
@@ -889,6 +893,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -1029,7 +1034,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "CHECKBOX"
+  text: "Colorless"
   font: "theme"
   id: "colorless/label"
   xanchor: XANCHOR_NONE
@@ -1055,6 +1060,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -1694,7 +1700,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "CHECKBOX"
+  text: "Allow Negative"
   font: "theme"
   id: "negative/label"
   xanchor: XANCHOR_NONE
@@ -1720,6 +1726,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
