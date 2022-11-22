@@ -1,0 +1,114 @@
+images {
+  image: "/gooey-theme/images/boxCheckmark.png"
+}
+images {
+  image: "/gooey-theme/images/boxCross.png"
+}
+images {
+  image: "/gooey-theme/images/boxTick.png"
+}
+images {
+  image: "/gooey-theme/images/button00.png"
+}
+images {
+  image: "/gooey-theme/images/button01.png"
+}
+images {
+  image: "/gooey-theme/images/button02.png"
+}
+images {
+  image: "/gooey-theme/images/button03.png"
+}
+images {
+  image: "/gooey-theme/images/button04.png"
+}
+images {
+  image: "/gooey-theme/images/button05.png"
+}
+images {
+  image: "/gooey-theme/images/button06.png"
+}
+images {
+  image: "/gooey-theme/images/button07.png"
+}
+images {
+  image: "/gooey-theme/images/button08.png"
+}
+images {
+  image: "/gooey-theme/images/button09.png"
+}
+images {
+  image: "/gooey-theme/images/button10.png"
+}
+images {
+  image: "/gooey-theme/images/button11.png"
+}
+images {
+  image: "/gooey-theme/images/button12.png"
+}
+images {
+  image: "/gooey-theme/images/button13.png"
+}
+images {
+  image: "/gooey-theme/images/checkmark.png"
+}
+images {
+  image: "/gooey-theme/images/circle.png"
+}
+images {
+  image: "/gooey-theme/images/cross.png"
+}
+images {
+  image: "/gooey-theme/images/dropdownBottom.png"
+}
+images {
+  image: "/gooey-theme/images/dropdownMid.png"
+}
+images {
+  image: "/gooey-theme/images/dropdownTop.png"
+}
+images {
+  image: "/gooey-theme/images/panel.png"
+}
+images {
+  image: "/gooey-theme/images/secondary_box.png"
+}
+images {
+  image: "/gooey-theme/images/secondary_boxCheckmark.png"
+}
+images {
+  image: "/gooey-theme/images/secondary_boxCross.png"
+}
+images {
+  image: "/gooey-theme/images/secondary_boxTick.png"
+}
+images {
+  image: "/gooey-theme/images/secondary_button02.png"
+}
+images {
+  image: "/gooey-theme/images/secondary_circle.png"
+}
+images {
+  image: "/gooey-theme/images/secondary_sliderVertical.png"
+}
+images {
+  image: "/gooey-theme/images/sliderDown.png"
+}
+images {
+  image: "/gooey-theme/images/sliderLeft.png"
+}
+images {
+  image: "/gooey-theme/images/sliderRight.png"
+}
+images {
+  image: "/gooey-theme/images/sliderUp.png"
+}
+images {
+  image: "/gooey-theme/images/tick.png"
+}
+images {
+  image: "/gooey-theme/images/transparent1px.png"
+}
+margin: 0
+extrude_borders: 2
+inner_padding: 0
