@@ -41,6 +41,15 @@ function M.button(node_id, action_id, action, fn)
 	return gooey.button(node_id .. "/bg", action_id, action, fn, refresh_button)
 end
 
+local function refresh_button(button)
+	if button.pressed_now or button.released_now then
+		--pprint(button)
+	end
+end
+function M.button_icon(node_id, action_id, action, fn)
+	return gooey.button(node_id .. "/bg", action_id, action, fn, refresh_button)
+end
+
 local function refresh_checkbox(checkbox)
 	if checkbox.pressed_now or checkbox.released_now then
 		utils.shake(checkbox.node, vmath.vector3(1))

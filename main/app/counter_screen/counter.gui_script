@@ -1,5 +1,7 @@
 local counter = require "main.app.counter_screen.counter_screen"
 local url = require "utils.url"
+local theme = require "gooey-theme.theme"
+local monarch = require "monarch.monarch"
 
 function init(self)
     url.set("counter", msg.url("."))
@@ -14,5 +16,8 @@ end
 
 
 function on_input(self, action_id, action)
-    counter.on_input(self, action_id, action)
+    local b = theme.button_icon("settings", action_id, action, function() monarch.show(hash("settings")) end)
+    if b.consumed == false then
+        counter.on_input(self, action_id, action)
+    end
 end

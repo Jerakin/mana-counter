@@ -1,4 +1,10 @@
 images {
+  image: "/gooey-theme/images/cog.png"
+}
+images {
+  image: "/gooey-theme/images/button_tab.png"
+}
+images {
   image: "/gooey-theme/images/button.png"
 }
 images {

@@ -24,18 +24,6 @@ function init(self)
 	counters.load()
 end
 
-
-function on_input(self, action_id, action)
-	local g = gesture.on_input(self, action_id, action)
-	if g then
-		if g.swipe_down then
-			monarch.show(hash("settings"))
-		end
-	end
-	
-end
-
-
 function on_message(self, message_id, message, sender)
 	monarch.show(hash("main"))
 end
