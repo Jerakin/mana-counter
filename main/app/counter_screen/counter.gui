@@ -15,7 +15,7 @@ background_color {
 }
 nodes {
   position {
-    x: -262.0
+    x: 0.0
     y: 320.0
     z: 0.0
     w: 1.0
@@ -292,7 +292,7 @@ nodes {
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
 }
 nodes {
   position {
@@ -350,7 +350,7 @@ nodes {
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
 }
 nodes {
   position {

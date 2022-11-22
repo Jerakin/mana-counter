@@ -2,10 +2,19 @@ local gooey = require "gooey.gooey"
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
 local kenneyblue = require "gooey-kenney.kenneyblue"
+local defsave = require("defsave.defsave")
+
+local function set_inital_state(data)
+    for i in pairs(data) do
+        kenneyblue.checkbox(string.lower(data[i].name)).set_checked(data[i].enabled)
+    end
+end
 
 function init(self)
     msg.post(".", "acquire_input_focus")
     gui.set_render_order(1)
+    local counter = defsave.get("config", "counter")
+    set_inital_state(counter)
     -- create transitions for the node 'root'
     -- the node will slide in/out from left and right with
     -- a specific easing, duration and delay
@@ -33,6 +42,14 @@ function on_message(self, message_id, message, sender)
 end
 
 local function set_visible(name, visible)
+    local counter = defsave.get("config", "counter")
+    for i in pairs(counter) do
+        if counter[i].name == name then
+            counter[i].enabled = visible
+        end
+    end
+    defsave.set("config", "counter", counter)
+    defsave.save("config")
 end
 
 function on_input(self, action_id, action)
@@ -57,6 +74,7 @@ function on_input(self, action_id, action)
     kenneyblue.button("add", action_id, action, function ()
         monarch.back()
     end)
+    return true
 end
 
 function on_reload(self)

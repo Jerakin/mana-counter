@@ -2,11 +2,16 @@ local monarch = require "monarch.monarch"
 local gesture = require "in.gesture"
 local dirtylarry = require "dirtylarry.dirtylarry"
 local gooey = require "gooey.gooey"
+local defsave = require("defsave.defsave")
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	--msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
 	msg.post("#", "show_first_screen")
+	defsave.appname = "mana_counter"
+	defsave.default_data.config = {counter={
+		{name="White", enabled=true}, {name="Blue", enabled=true}, {name="Black", enabled=true}, {name="Red", enabled=true}, {name="Green", enabled=true}}}
+	defsave.load("config")
 end
 
 
@@ -15,6 +20,7 @@ function on_input(self, action_id, action)
 	if g then
 		if g.swipe_down then
 			monarch.show(hash("settings"))
+			return true
 		end
 	end
 end
