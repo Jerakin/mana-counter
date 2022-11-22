@@ -14,7 +14,6 @@ local function create_counter(options)
 	local data = {}
 	local counter = gui.clone_tree(M.SCENE_DATA.template)
 	local b_size = vmath.vector3(options.size.x, gui.get_height()/2, 0)
-	--gui.set_parent(counter["template_counter/box"], SCENE_DATA.root)
 	gui.set_visible(counter["template_counter/box"], true)
 	gui.set_color(counter["template_counter/box"], options.color)
 	gui.set_size(counter["template_counter/box"], options.size)
@@ -46,7 +45,9 @@ local function setup(data)
 		if data[i].enabled then
 			index = index + 1
 			local name = data[i].name
-			M.SCENE_DATA.node_data[name] = {}
+			if M.SCENE_DATA.node_data[name] == nil then
+				M.SCENE_DATA.node_data[name] = {}
+			end
 			local data = constants[name]
 			local options = {
 				name=name,
@@ -57,9 +58,22 @@ local function setup(data)
 			}
 			local counter = create_counter(options)
 			M.SCENE_DATA.node_data[name].nodes = counter
-			M.SCENE_DATA.node_data[name].input = {total=0}
+
+			-- Set the total, keep if we already have a total
+			local old_total = nil
+			if M.SCENE_DATA.node_data[name].input ~= nil then
+				old_total = M.SCENE_DATA.node_data[name].input.total
+			end
+			
+			local t = old_total ~= nil and old_total or 0
+			M.SCENE_DATA.node_data[name].input = {total=t}
 		end
 	end
+end
+
+function M.reload()
+	local counter = defsave.get("config", "counter")
+	setup(counter)
 end
 
 function M.init(self)

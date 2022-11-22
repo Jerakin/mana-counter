@@ -1,11 +1,15 @@
 local counter = require "main.app.counter_screen.counter"
+local url = require "utils.url"
 
 function init(self)
+    url.set("counter", msg.url("."))
     counter.init(self)
 end
 
 function on_message(self, message_id, message)
-    print(message_id)
+    if message_id == hash("reload_ui") then
+        counter.reload()
+    end
 end
 
 

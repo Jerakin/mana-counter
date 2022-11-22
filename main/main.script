@@ -8,8 +8,16 @@ function init(self)
 	--msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
 	msg.post("#", "show_first_screen")
 	defsave.appname = "mana_counter"
-	defsave.default_data.config = {counter={
-		{name="White", enabled=true}, {name="Blue", enabled=true}, {name="Black", enabled=true}, {name="Red", enabled=true}, {name="Green", enabled=true}}}
+	defsave.default_data.config = {
+		counter={
+			{name="White", enabled=true}, 
+			{name="Blue", enabled=true}, 
+			{name="Black", enabled=true}, 
+			{name="Red", enabled=true}, 
+			{name="Green", enabled=true},
+			{name="Colorless", enabled=false}
+		}
+	}
 	defsave.load("config")
 end
 

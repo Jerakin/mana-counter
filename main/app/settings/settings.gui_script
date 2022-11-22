@@ -3,6 +3,9 @@ local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
 local theme = require "gooey-theme.theme"
 local defsave = require("defsave.defsave")
+local counter = require "main.app.counter_screen.counter"
+local url = require "utils.url"
+
 
 local function set_inital_state(data)
     for i in pairs(data) do
@@ -12,6 +15,7 @@ end
 
 function init(self)
     msg.post(".", "acquire_input_focus")
+    url.set("settings", msg.url("."))
     gui.set_render_order(1)
     local counter = defsave.get("config", "counter")
     set_inital_state(counter)
@@ -43,10 +47,15 @@ end
 
 local function set_visible(name, visible)
     local counter = defsave.get("config", "counter")
+    local set = false
     for i in pairs(counter) do
         if counter[i].name == name then
+            set = true
             counter[i].enabled = visible
         end
+    end
+    if set == false then
+        table.insert(counter, {name=name, enabled=visible})
     end
     defsave.set("config", "counter", counter)
     defsave.save("config")
@@ -71,7 +80,8 @@ function on_input(self, action_id, action)
     theme.checkbox("colorless", action_id, action, function(checkbox)
         set_visible("Colorless", checkbox.checked)
     end)
-    theme.close_button("close", action_id, action, function ()
+    theme.close_button("close", action_id, action, function()
+        msg.post(url.counter, "reload_ui")
         monarch.back()
     end)
     return true
