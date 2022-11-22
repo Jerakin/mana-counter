@@ -122,32 +122,31 @@ end
 
 function M.on_input(self, action_id, action)
 	local g = gesture.on_input(self, action_id, action)
-	if g then
-		if action.pressed then
-			for name in pairs(M.SCENE_DATA.node_data) do
-				local node_data = M.SCENE_DATA.node_data[name]
-				if gui.pick_node(node_data.nodes.add, action.x, action.y) then
-					M.SCENE_DATA.active.button = node_data.nodes.add
-					M.SCENE_DATA.active.text = node_data.nodes.text
-					M.SCENE_DATA.active.total = node_data.nodes.total
-					M.SCENE_DATA.active.name = name
-					M.SCENE_DATA.active.mult = 1
-				elseif gui.pick_node(node_data.nodes.remove, action.x, action.y) then
-					M.SCENE_DATA.active.button = node_data.nodes.remove
-					M.SCENE_DATA.active.total = node_data.nodes.total
-					M.SCENE_DATA.active.text = node_data.nodes.text
-					M.SCENE_DATA.active.name = name
-					M.SCENE_DATA.active.mult = -1
-				end
+	if action.pressed then
+		for name in pairs(M.SCENE_DATA.node_data) do
+			local node_data = M.SCENE_DATA.node_data[name]
+			if gui.pick_node(node_data.nodes.add, action.x, action.y) then
+				M.SCENE_DATA.active.button = node_data.nodes.add
+				M.SCENE_DATA.active.text = node_data.nodes.text
+				M.SCENE_DATA.active.total = node_data.nodes.total
+				M.SCENE_DATA.active.name = name
+				M.SCENE_DATA.active.mult = 1
+			elseif gui.pick_node(node_data.nodes.remove, action.x, action.y) then
+				M.SCENE_DATA.active.button = node_data.nodes.remove
+				M.SCENE_DATA.active.total = node_data.nodes.total
+				M.SCENE_DATA.active.text = node_data.nodes.text
+				M.SCENE_DATA.active.name = name
+				M.SCENE_DATA.active.mult = -1
 			end
-			if M.SCENE_DATA.active.button then
-				if M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer then
-					timer.cancel(M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer)
-				end
-				gui.set_visible(M.SCENE_DATA.active.button, true)
-			end
-			
 		end
+		if M.SCENE_DATA.active.button then
+			if M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer then
+				timer.cancel(M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer)
+			end
+			gui.set_visible(M.SCENE_DATA.active.button, true)
+		end
+	end
+	if g then
 		if g.tap or g.double_tap then
 			increment(1)
 		end

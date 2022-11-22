@@ -132,15 +132,14 @@ function on_input(self, action_id, action)
 
     for i in pairs(self.additional_counters) do
         local data = self.additional_counters[i]
-        if data ~= nil then
-            theme.checkbox(data.name, action_id, action,function(checkbox)
-                set_visible(data.name, checkbox.checked)
-            end)
-            theme.button(data.name .. "_delete", action_id, action, function(button)
-                counters.delete(data.name)
-                set_inital_state(self)
-            end)
-        end
+        theme.checkbox(data.name, action_id, action,function(checkbox)
+            set_visible(data.name, checkbox.checked)
+        end)
+        theme.button(data.name .. "_delete", action_id, action, function(button)
+            counters.delete(data.name)
+            set_inital_state(self)
+        end)
+        
     end
     if counters.number_of_custom() < 5 then
         theme.button("add", action_id, action, function()

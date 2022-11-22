@@ -113,9 +113,11 @@ end
 function M.load()
 	M.counter = defsave.get("config", "counter")
 	local extra = defsave.get("config", "extra")
-	for i in pairs(extra) do
-		local data = extra[i]
-		M.data[data.name] = {color = data.color, texture=data.texture}
+	if extra ~=nil then
+		for i in pairs(extra) do
+			local data = extra[i]
+			M.data[data.name] = {color = data.color, texture=data.texture}
+		end
 	end
 end
 
