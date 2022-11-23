@@ -139,6 +139,9 @@ function on_input(self, action_id, action)
         msg.post(url.counter, "reload_ui")
         monarch.back()
     end)
+    theme.button("info", action_id, action, function()
+        monarch.show("info")
+    end)
     return true
 end
 
