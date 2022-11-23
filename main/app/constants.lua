@@ -1,5 +1,8 @@
 local M = {}
 
+-- Version for user consent, update this if user agreement changes
+M.user_consent = 1
+
 M.icons = {
 	"empty",
 	"ability-activated", "ability-adamant", "ability-adapt", "ability-addendum", "ability-adventure", 

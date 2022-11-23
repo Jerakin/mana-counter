@@ -1,4 +1,4 @@
-script: "/main/app/counter_screen/info/info.gui_script"
+script: "/main/app/info/info.gui_script"
 fonts {
   name: "text"
   font: "/assets/font/text.font"
