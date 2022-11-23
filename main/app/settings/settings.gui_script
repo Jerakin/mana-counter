@@ -60,7 +60,7 @@ function init(self)
     msg.post(".", "acquire_input_focus")
     url.set("settings", msg.url("."))
     gui.set_render_order(1)
-
+    print(msg.url("."))
 
     self.template = gui.get_node("template/box")
     self.template_delete = gui.get_node("template_delete/bg")
@@ -70,21 +70,13 @@ function init(self)
     
     self.additional_counters = {}
     local settings = defsave.get("config", "settings")
-    --[[if settings == nil then
-        settings = {negative=true}
-        defsave.set("config", "settings", settings)
-    end--]]
     
     theme.checkbox("negative").set_checked(settings.negative)
-    -- create transitions for the node 'root'
-    -- the node will slide in/out from left and right with
-    -- a specific easing, duration and delay
-    --[[self.transition = transitions.create(gui.get_node("root"))
-            .show_in(transitions.slide_in_top, gui.EASING_OUTQUAD, 1, 0)
-            .show_out(transitions.slide_out_top, gui.EASING_INQUAD, 1, 0)
-            .back_in(transitions.slide_in_top, gui.EASING_OUTQUAD, 1, 0)
-            .back_out(transitions.slide_out_top, gui.EASING_INQUAD, 1, 0)
-            --]]
+    self.transition = transitions.create(gui.get_node("root"))
+            .show_in(transitions.slide_in_top, gui.EASING_OUTQUAD, .4, 0)
+            .show_out(transitions.slide_out_top, gui.EASING_INQUAD, .4, 0)
+            .back_in(transitions.slide_in_top, gui.EASING_OUTQUAD, .2, 0)
+            .back_out(transitions.slide_out_top, gui.EASING_INQUAD, .2, 0)
     set_inital_state(self)
 end
 
@@ -98,7 +90,7 @@ function on_message(self, message_id, message, sender)
     if message_id == hash("reload_ui") then
         set_inital_state(self)
     end
-    --self.transition.handle(message_id, message, sender)
+    self.transition.handle(message_id, message, sender)
     -- you can also check when a transition has completed:
     if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
         print("Show in done!")

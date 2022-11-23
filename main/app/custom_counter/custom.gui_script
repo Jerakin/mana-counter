@@ -43,6 +43,7 @@ end
 function init(self)
     msg.post(".", "acquire_input_focus")
     url.set("custom", msg.url("."))
+    print(msg.url("."))
     gui.set_render_order(2)
     ICON_PREVIEW = gui.get_node("selected_item")
     
@@ -56,6 +57,12 @@ function init(self)
         table.insert(t, constants.icons[i])
     end
 
+    self.transition = transitions.create(gui.get_node("root"))
+        .show_in(transitions.slide_in_top, gui.EASING_OUTQUAD, .4, 0)
+        .show_out(transitions.slide_out_top, gui.EASING_INQUAD, .4, 0)
+        .back_in(transitions.slide_in_top, gui.EASING_OUTQUAD, .2, 0)
+        .back_out(transitions.slide_out_top, gui.EASING_INQUAD, .2, 0)
+    
     update_dynamic_icon_list(theme.dynamic_icon_list("icon_list", "scroll", self.icon_data, nil, {x=0, y=0}))
 end
 
