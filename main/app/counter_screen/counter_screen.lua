@@ -149,6 +149,9 @@ local function toggle_button(node, visible)
 end
 
 function M.on_input(self, action_id, action)
+	if action_id ~= hash("touch") then
+		return 
+	end
 	if action.pressed then
 		M.SCENE_DATA.active = {}
 		for name in pairs(M.SCENE_DATA.node_data) do
@@ -167,6 +170,7 @@ function M.on_input(self, action_id, action)
 				M.SCENE_DATA.active.mult = -1
 			end
 		end
+		
 		if M.SCENE_DATA.active.button ~= nil then
 			if M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer then
 				timer.cancel(M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.timer)
