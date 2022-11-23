@@ -8,6 +8,7 @@ local M = {}
 
 M.SCENE_DATA = {}
 M.SCENE_DATA.node_data = {}
+M.SCENE_DATA.counters = {}
 M.SCENE_DATA.input_amount = 1
 M.SCENE_DATA.active = {}
 M.SCENE_DATA.allow_negative = false
@@ -16,22 +17,32 @@ local function create_counter(options)
 	local data = {}
 	local counter = gui.clone_tree(M.SCENE_DATA.template)
 	local b_size = vmath.vector3(options.size.x, gui.get_height()/2, 0)
-	gui.set_visible(counter["template_counter/box"], true)
-	gui.set_color(counter["template_counter/box"], options.color)
-	gui.set_size(counter["template_counter/box"], options.size)
-	gui.set_position(counter["template_counter/box"], options.position)
 
-	gui.set_size(counter["template_counter/add"], b_size)
-	gui.set_size(counter["template_counter/remove"], b_size)
-	gui.set_visible(counter["template_counter/add"], false)
-	gui.set_visible(counter["template_counter/remove"], false)
-
-	gui.play_flipbook(counter["template_counter/symbol"], options.texture)
 	data.root = counter["template_counter/box"]
 	data.add = counter["template_counter/add"]
 	data.remove = counter["template_counter/remove"]
 	data.total = counter["template_counter/text_total"]
 	data.text = counter["template_counter/text"]
+	
+	gui.set_visible(data.root, true)
+	gui.set_color(data.root, options.color)
+	gui.set_size(data.root, options.size)
+	gui.set_position(data.root, options.position)
+
+	gui.set_size(data.add, b_size)
+	gui.set_size(data.remove, b_size)
+	gui.set_visible(data.add, false)
+	gui.set_visible(data.remove, false)
+
+	gui.play_flipbook(counter["template_counter/symbol"], options.texture)
+
+	
+	if M.SCENE_DATA.counters[options.name] ~= nil then
+		if M.SCENE_DATA.counters[options.name] ~= 0 then
+			gui.set_visible(data.text, true)
+		end
+		gui.set_text(data.text, M.SCENE_DATA.counters[options.name])
+	end
 	return data
 end
 
@@ -53,11 +64,14 @@ local function setup()
 	for i in pairs(loaded_data) do
 		local data = loaded_data[i]
 		local name = data.name
-		
+		if M.SCENE_DATA.counters[name] == nil then
+			M.SCENE_DATA.counters[name] = 0
+		end
 		if M.SCENE_DATA.node_data[name] == nil then
 			M.SCENE_DATA.node_data[name] = {}
 		end
 		local options = {
+			name=name,
 			color=data.color, 
 			texture=data.texture, 
 			size = vmath.vector3(width, 640, 0),
@@ -106,23 +120,24 @@ end
 local function increment(i)
 	local n = tonumber(gui.get_text(M.SCENE_DATA.active.text))
 	local add = (M.SCENE_DATA.active.mult * i)
-	local capped = false
+	local name = M.SCENE_DATA.active.name
 	if not M.SCENE_DATA.allow_negative then
 		if n + add < 0 then
 			add = -n
 		end
 	end
-	local new_n = n + add
-	M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.total = M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.total + add
 	
-	gui.set_text(M.SCENE_DATA.active.text, new_n)
-	gui.set_text(M.SCENE_DATA.active.total, add_operator(M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.total))
-	if M.SCENE_DATA.node_data[M.SCENE_DATA.active.name].input.total == 0 then
+	M.SCENE_DATA.node_data[name].input.total = M.SCENE_DATA.node_data[name].input.total + add
+	M.SCENE_DATA.counters[name] = M.SCENE_DATA.counters[name] + add
+	
+	gui.set_text(M.SCENE_DATA.active.text, M.SCENE_DATA.counters[name])
+	gui.set_text(M.SCENE_DATA.active.total, add_operator(M.SCENE_DATA.node_data[name].input.total))
+	if M.SCENE_DATA.node_data[name].input.total == 0 then
 		gui.set_visible(M.SCENE_DATA.active.total, false)
 	else
 		gui.set_visible(M.SCENE_DATA.active.total, true)
 	end
-	if new_n == 0 then
+	if M.SCENE_DATA.counters[name] == 0 then
 		gui.set_visible(M.SCENE_DATA.active.text, false)
 	else
 		gui.set_visible(M.SCENE_DATA.active.text, true)
@@ -159,9 +174,8 @@ function M.on_input(self, action_id, action)
 			gui.set_visible(M.SCENE_DATA.active.button, true)
 		end
 	end
-	print(action.released)
+
 	if action.released and M.SCENE_DATA.active.button then
-		
 		gui.set_visible(M.SCENE_DATA.active.button, false)
 		local name = M.SCENE_DATA.active.name
 		M.SCENE_DATA.node_data[name].input.timer = timer.delay(2, false, function() 
@@ -176,7 +190,6 @@ function M.on_input(self, action_id, action)
 		if g.tap or g.double_tap then
 			increment(1)
 		end
-
 		if g.repeated then
 			if action.repeated then
 				increment(10)
