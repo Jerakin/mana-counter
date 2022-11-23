@@ -43,7 +43,6 @@ end
 
 local function refresh_button(button)
 	if button.pressed_now or button.released_now then
-		--pprint(button)
 	end
 end
 function M.button_icon(node_id, action_id, action, fn)

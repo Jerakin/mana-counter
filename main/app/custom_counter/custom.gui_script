@@ -43,7 +43,6 @@ end
 function init(self)
     msg.post(".", "acquire_input_focus")
     url.set("custom", msg.url("."))
-    print(msg.url("."))
     gui.set_render_order(2)
     ICON_PREVIEW = gui.get_node("selected_item")
     

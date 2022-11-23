@@ -134,8 +134,6 @@ local function toggle_button(node, visible)
 end
 
 function M.on_input(self, action_id, action)
-	local g = gesture.on_input(self, action_id, action)
-
 	if action.pressed then
 		M.SCENE_DATA.active = {}
 		for name in pairs(M.SCENE_DATA.node_data) do
@@ -161,7 +159,9 @@ function M.on_input(self, action_id, action)
 			gui.set_visible(M.SCENE_DATA.active.button, true)
 		end
 	end
+	print(action.released)
 	if action.released and M.SCENE_DATA.active.button then
+		
 		gui.set_visible(M.SCENE_DATA.active.button, false)
 		local name = M.SCENE_DATA.active.name
 		M.SCENE_DATA.node_data[name].input.timer = timer.delay(2, false, function() 
@@ -170,6 +170,8 @@ function M.on_input(self, action_id, action)
 			M.SCENE_DATA.node_data[name].input.timer = nil
 		end)
 	end
+	
+	local g = gesture.on_input(self, action_id, action)
 	if g then
 		if g.tap or g.double_tap then
 			increment(1)

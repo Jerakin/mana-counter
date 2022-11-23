@@ -60,7 +60,6 @@ function init(self)
     msg.post(".", "acquire_input_focus")
     url.set("settings", msg.url("."))
     gui.set_render_order(1)
-    print(msg.url("."))
 
     self.template = gui.get_node("template/box")
     self.template_delete = gui.get_node("template_delete/bg")
@@ -91,10 +90,6 @@ function on_message(self, message_id, message, sender)
         set_inital_state(self)
     end
     self.transition.handle(message_id, message, sender)
-    -- you can also check when a transition has completed:
-    if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
-        print("Show in done!")
-    end
 end
 
 function on_input(self, action_id, action)
