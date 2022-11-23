@@ -76,7 +76,8 @@ function init(self)
             .show_out(transitions.slide_out_top, gui.EASING_INQUAD, .4, 0)
             .back_in(transitions.slide_in_top, gui.EASING_OUTQUAD, .2, 0)
             .back_out(transitions.slide_out_top, gui.EASING_INQUAD, .2, 0)
-    set_inital_state(self)
+            set_inital_state(self)
+            gui.set_text(gui.get_node("version"), sys.get_config("project.version"))
 end
 
 function final(self)
