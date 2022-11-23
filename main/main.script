@@ -65,10 +65,7 @@ end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	
 
-	--msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
-	
 	defsave.appname = "mana_counter"
 	defsave.default_data.config = {
 		counter={

@@ -84,8 +84,12 @@ function M.get(name)
 end
 
 function M.add(name, data)
-	M.data[name] = {color = data.color, texture=data.texture}
-	table.insert(M.counter, {name=name, enabled=false})
+	if M.data[name] == nil then 
+		M.data[name] = {color = data.color, texture=data.texture}
+		table.insert(M.counter, {name=name, enabled=false})
+		return true
+	end
+	return false
 end
 
 
