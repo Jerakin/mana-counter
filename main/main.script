@@ -3,8 +3,77 @@ local gesture = require "in.gesture"
 local gooey = require "gooey.gooey"
 local defsave = require("defsave.defsave")
 local counters = require "main.app.counters"
+local platform = require "utils.platform"
+local log = require "utils.log"
+
+
+local function send_crash_on_start()
+	local handle = crash.load_previous()
+	if handle then
+		gameanalytics.addErrorEvent {
+			severity = "Error",
+			message =  crash.get_extra_data(handle)
+		}
+		crash.release(handle)
+	end
+end
+
+local error_table = {}
+local VERSION = sys.get_config("project.version")
+-- https://gameanalytics.com/docs/item/ga-data
+-- https://gameanalytics.com/docs/item/resource-events
+
+local function error_handler(source, message, traceback)
+	-- don't flood the same unique message more than once
+	local traceback_hash = hash(traceback)
+	if error_table[traceback_hash] ~= nil then
+		return false
+	else
+		error_table[traceback_hash] = true
+	end
+
+	local severity_rating = "Critical"
+	if sys.get_engine_info().is_debug then
+		severity_rating = "Debug"
+	end
+	local error_message = VERSION .. " - " .. source .. " - " .. message .. " - " .. traceback
+
+	if gameanalytics then
+		gameanalytics.addErrorEvent {
+			severity = severity_rating,
+			message = error_message
+		}
+	end
+	log.critical(error_message)
+end
+
+
+local gameanalytics_keys = {
+	--["Windows"] = "gameanalytics.game_key_windows",
+	--["Darwin"] = "gameanalytics.game_key_osx",
+	["Android"] = "gameanalytics.game_key_android",
+	["HTML5"] = "gameanalytics.game_key_html5",
+	--["iPhone OS"] = "gameanalytics.game_key_ios"
+}
+
+local function window_resized()
+	msg.post("@render:", "window_event")
+end
+
 
 function init(self)
+	
+	local ga_config = gameanalytics_keys[platform.CURRENT] and sys.get_config(gameanalytics_keys[platform.CURRENT])
+	if not gameanalytics or ga_config == nil or ga_config == "" then
+		gameanalytics = require "utils.mock_gameanalytics"
+		log.info("Skipping GameAnalytics")
+	else
+		send_crash_on_start()
+		sys.set_error_handler(error_handler)
+	end
+
+	log.outfile = sys.get_save_file("pokedex5E", "log")
+
 	msg.post(".", "acquire_input_focus")
 	--msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
 	msg.post("#", "show_first_screen")

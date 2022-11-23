@@ -1,5 +1,6 @@
 [project]
 title = ManaCounter
+version = 1.0.0
 dependencies#0 = https://github.com/britzl/monarch/archive/refs/tags/3.7.0.zip
 dependencies#1 = https://github.com/Jerakin/editor-script-atlas/archive/master.zip
 dependencies#2 = https://github.com/Jerakin/editor-script-align/archive/master.zip
@@ -7,6 +8,8 @@ dependencies#3 = https://github.com/Jerakin/editor-script-distribute/archive/mas
 dependencies#4 = https://github.com/subsoap/defsave/archive/refs/tags/v1.2.4.zip
 dependencies#5 = https://github.com/Jerakin/defold-input/archive/refs/heads/feature/gesture_repeated.zip
 dependencies#6 = https://github.com/britzl/gooey/archive/refs/tags/10.4.1.zip
+dependencies#7 = https://github.com/GameAnalytics/GA-SDK-DEFOLD/archive/refs/tags/4.2.6.zip
+dependencies#8 = https://github.com/GameAnalytics/defold-openssl/archive/master.zip
 
 [bootstrap]
 main_collection = /main/main.collectionc

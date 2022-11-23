@@ -68,10 +68,6 @@ end
 
 function on_message(self, message_id, message, sender)
     self.transition.handle(message_id, message, sender)
-    -- you can also check when a transition has completed:
-    if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
-        print("Show in done!")
-    end
 end
 
 
