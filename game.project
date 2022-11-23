@@ -50,6 +50,7 @@ input_method = HiddenInputField
 package = com.jerakin.manacounter
 minimum_sdk_version = 19
 immersive_mode = 1
+version_code = 2
 
 [script]
 shared_state = 1
