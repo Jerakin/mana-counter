@@ -21,7 +21,8 @@ local function create_counter(options)
 	data.root = counter["template_counter/box"]
 	data.add = counter["template_counter/add"]
 	data.remove = counter["template_counter/remove"]
-	data.total = counter["template_counter/text_total"]
+	data.total_p = counter["template_counter/text_total_positive"]
+	data.total_n = counter["template_counter/text_total_negative"]
 	data.text = counter["template_counter/text"]
 	
 	gui.set_visible(data.root, true)
@@ -131,11 +132,19 @@ local function increment(i)
 	M.SCENE_DATA.counters[name] = M.SCENE_DATA.counters[name] + add
 	
 	gui.set_text(M.SCENE_DATA.active.text, M.SCENE_DATA.counters[name])
-	gui.set_text(M.SCENE_DATA.active.total, add_operator(M.SCENE_DATA.node_data[name].input.total))
+	gui.set_text(M.SCENE_DATA.active.total_p, add_operator(M.SCENE_DATA.node_data[name].input.total))
+	gui.set_text(M.SCENE_DATA.active.total_n, add_operator(M.SCENE_DATA.node_data[name].input.total))
 	if M.SCENE_DATA.node_data[name].input.total == 0 then
-		gui.set_visible(M.SCENE_DATA.active.total, false)
+		gui.set_visible(M.SCENE_DATA.active.total_n, false)
+		gui.set_visible(M.SCENE_DATA.active.total_p, false)
 	else
-		gui.set_visible(M.SCENE_DATA.active.total, true)
+		if M.SCENE_DATA.node_data[name].input.total > 0 then
+			gui.set_visible(M.SCENE_DATA.active.total_p, true)
+			gui.set_visible(M.SCENE_DATA.active.total_n, false)
+		else
+			gui.set_visible(M.SCENE_DATA.active.total_n, true)
+			gui.set_visible(M.SCENE_DATA.active.total_p, false)
+		end
 	end
 	if M.SCENE_DATA.counters[name] == 0 then
 		gui.set_visible(M.SCENE_DATA.active.text, false)
@@ -159,12 +168,14 @@ function M.on_input(self, action_id, action)
 			if gui.pick_node(node_data.nodes.add, action.x, action.y) then
 				M.SCENE_DATA.active.button = node_data.nodes.add
 				M.SCENE_DATA.active.text = node_data.nodes.text
-				M.SCENE_DATA.active.total = node_data.nodes.total
+				M.SCENE_DATA.active.total_n = node_data.nodes.total_n
+				M.SCENE_DATA.active.total_p = node_data.nodes.total_p
 				M.SCENE_DATA.active.name = name
 				M.SCENE_DATA.active.mult = 1
 			elseif gui.pick_node(node_data.nodes.remove, action.x, action.y) then
 				M.SCENE_DATA.active.button = node_data.nodes.remove
-				M.SCENE_DATA.active.total = node_data.nodes.total
+				M.SCENE_DATA.active.total_n = node_data.nodes.total_n
+				M.SCENE_DATA.active.total_p = node_data.nodes.total_p
 				M.SCENE_DATA.active.text = node_data.nodes.text
 				M.SCENE_DATA.active.name = name
 				M.SCENE_DATA.active.mult = -1
@@ -183,7 +194,8 @@ function M.on_input(self, action_id, action)
 		gui.set_visible(M.SCENE_DATA.active.button, false)
 		local name = M.SCENE_DATA.active.name
 		M.SCENE_DATA.node_data[name].input.timer = timer.delay(5, false, function() 
-			gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total, false)
+			gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total_p, false)
+			gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total_n, false)
 			M.SCENE_DATA.node_data[name].input.total = 0
 			M.SCENE_DATA.node_data[name].input.timer = nil
 		end)
