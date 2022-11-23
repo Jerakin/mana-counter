@@ -7,6 +7,7 @@ local url = require "utils.url"
 local constants = require "main.app.constants"
 local gesture = require "in.gesture"
 local counters = require "main.app.counters"
+local w3c = require "color.w3c"
 
 local POSITION = {}
 local SELECTED_ICON = nil
@@ -40,12 +41,24 @@ local function update_dynamic_icon_list(list)
         end
     end
 end
+
+function randomize_colors()
+    local keyset = {}
+    for k in pairs(w3c) do
+        table.insert(keyset, w3c[k])
+    end
+    for i=1, 16 do
+        local color_node = gui.get_node(hash("color_" .. i))
+        gui.set_color(color_node, keyset[math.random(#keyset)])
+    end
+end
+
 function init(self)
     msg.post(".", "acquire_input_focus")
     url.set("custom", msg.url("."))
     gui.set_render_order(2)
     ICON_PREVIEW = gui.get_node("selected_item")
-    
+
     self.icon_data = {}
     local t = {}
     for i in pairs(constants.icons) do
@@ -79,7 +92,9 @@ function on_input(self, action_id, action)
     theme.button("close", action_id, action, function()
         monarch.back()
     end)
-
+    theme.button_icon("random", action_id, action, function()
+        randomize_colors()
+    end)
     theme.button("add", action_id, action, function()
         local icon = SELECTED_ICON
         
@@ -115,4 +130,5 @@ function on_input(self, action_id, action)
 end
 
 function on_reload(self)
+    randomize_colors()
 end

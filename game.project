@@ -10,6 +10,7 @@ dependencies#5 = https://github.com/Jerakin/defold-input/archive/refs/heads/feat
 dependencies#6 = https://github.com/britzl/gooey/archive/refs/tags/10.4.1.zip
 dependencies#7 = https://github.com/GameAnalytics/GA-SDK-DEFOLD/archive/refs/tags/4.2.6.zip
 dependencies#8 = https://github.com/GameAnalytics/defold-openssl/archive/master.zip
+dependencies#9 = https://github.com/Jerakin/defold-color/archive/master.zip
 
 [bootstrap]
 main_collection = /main/main.collectionc
