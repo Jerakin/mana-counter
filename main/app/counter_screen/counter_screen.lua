@@ -178,7 +178,7 @@ function M.on_input(self, action_id, action)
 	if action.released and M.SCENE_DATA.active.button then
 		gui.set_visible(M.SCENE_DATA.active.button, false)
 		local name = M.SCENE_DATA.active.name
-		M.SCENE_DATA.node_data[name].input.timer = timer.delay(2, false, function() 
+		M.SCENE_DATA.node_data[name].input.timer = timer.delay(5, false, function() 
 			gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total, false)
 			M.SCENE_DATA.node_data[name].input.total = 0
 			M.SCENE_DATA.node_data[name].input.timer = nil
