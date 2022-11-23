@@ -91,7 +91,8 @@ function init(self)
 			consent = 0
 			defsave.set("config", "user_consent", 0)
 		end
-		if consent < constants.user_consent then
+
+		if tonumber(consent) ~= tonumber(constants.user_consent) then
 			msg.post("#", "user_consent")
 		else
 			msg.post("#", "show_main")
@@ -124,7 +125,8 @@ function on_message(self, message_id, message, sender)
 end
 
 function final(self)
-	if defsave.get("config", "user_consent") == constants.user_consent then
+	local consent = defsave.get("config", "user_consent")
+	if tonumber(consent) == tonumber(constants.user_consent) then
 		counters.save()
 	end
 end

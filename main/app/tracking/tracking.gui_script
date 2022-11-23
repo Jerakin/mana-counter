@@ -19,6 +19,7 @@ end
 function on_input(self, action_id, action)
     theme.button("accept", action_id, action, function()
         defsave.set("config", "user_consent", constants.user_consent)
+        defsave.save("config")
         monarch.show("main")
     end)
     theme.button("deny", action_id, action, function()
