@@ -1,4 +1,7 @@
 images {
+  image: "/gooey-theme/images/total_view.png"
+}
+images {
   image: "/gooey-theme/images/update.png"
 }
 images {

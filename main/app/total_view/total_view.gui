@@ -7,6 +7,10 @@ fonts {
   name: "main"
   font: "/gooey-theme/fonts/theme.font"
 }
+textures {
+  name: "theme"
+  texture: "/gooey-theme/images/theme.atlas"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -51,7 +55,7 @@ nodes {
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NW
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -108,7 +112,7 @@ nodes {
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NW
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "root"
   layer: "below"
   inherit_alpha: true
@@ -197,7 +201,7 @@ nodes {
 nodes {
   position {
     x: 1048.0
-    y: -24.0
+    y: -25.0
     z: 0.0
     w: 1.0
   }
@@ -214,8 +218,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 10.0
-    y: 125.0
+    x: 1136.0
+    y: 55.0
     z: 0.0
     w: 1.0
   }
@@ -231,67 +235,9 @@ nodes {
   id: "sep"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_N
-  adjust_mode: ADJUST_MODE_FIT
+  pivot: PIVOT_NW
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "root"
-  layer: "below"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 0.49
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-}
-nodes {
-  position {
-    x: 0.0
-    y: 24.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 2.0
-    y: 150.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "box2"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_N
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "sep"
   layer: "below"
   inherit_alpha: true
   slice9 {
@@ -486,7 +432,7 @@ nodes {
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: 180.0
     w: 1.0
   }
   scale {
@@ -509,7 +455,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "theme/cog"
+  texture: "theme/total_view"
   id: "handle/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -528,6 +474,8 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 2
+  overridden_fields: 9
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0

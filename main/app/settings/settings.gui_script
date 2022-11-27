@@ -136,6 +136,7 @@ function on_input(self, action_id, action)
         end)
     end 
     theme.button("close", action_id, action, function()
+        msg.post(url.total_view, "update_sep")
         msg.post(url.counter, "reload_ui")
         monarch.back()
     end)
