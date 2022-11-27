@@ -3,6 +3,7 @@ local constants = require "main.app.constants"
 local defsave = require("defsave.defsave")
 local gesture = require "in.gesture"
 local counters = require "main.app.counters"
+local url = require "utils.url"
 
 local M = {}
 
@@ -82,12 +83,11 @@ local function setup()
 		M.SCENE_DATA.node_data[name].nodes = counter_nodes
 
 		-- Set the total, keep if we already have a total
-		local old_total = nil
+		local t = 0
 		if M.SCENE_DATA.node_data[name].input ~= nil then
-			old_total = M.SCENE_DATA.node_data[name].input.total
+			t = M.SCENE_DATA.node_data[name].input.total
 		end
 		
-		local t = old_total ~= nil and old_total or 0
 		M.SCENE_DATA.node_data[name].input = {total=t}
 	end
 end
@@ -127,7 +127,7 @@ local function increment(i)
 			add = -n
 		end
 	end
-	
+
 	M.SCENE_DATA.node_data[name].input.total = M.SCENE_DATA.node_data[name].input.total + add
 	M.SCENE_DATA.counters[name] = M.SCENE_DATA.counters[name] + add
 	
@@ -151,6 +151,15 @@ local function increment(i)
 	else
 		gui.set_visible(M.SCENE_DATA.active.text, true)
 	end
+
+	local total = 0
+	for name in pairs(M.SCENE_DATA.counters) do
+		local is_mana = counters.get(name)
+		if is_mana ~= nil and is_mana.is_default then
+			total = total + M.SCENE_DATA.counters[name]
+		end
+	end
+	msg.post(url.total_view, "update_total", {text=total})
 end
 
 local function toggle_button(node, visible)
@@ -193,11 +202,13 @@ function M.on_input(self, action_id, action)
 	if action.released and M.SCENE_DATA.active.button then
 		gui.set_visible(M.SCENE_DATA.active.button, false)
 		local name = M.SCENE_DATA.active.name
-		M.SCENE_DATA.node_data[name].input.timer = timer.delay(5, false, function() 
-			gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total_p, false)
-			gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total_n, false)
-			M.SCENE_DATA.node_data[name].input.total = 0
-			M.SCENE_DATA.node_data[name].input.timer = nil
+		M.SCENE_DATA.node_data[name].input.timer = timer.delay(5, false, function()
+			if M.SCENE_DATA.node_data[name] ~= nil then
+				gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total_p, false)
+				gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total_n, false)
+				M.SCENE_DATA.node_data[name].input.total = 0
+				M.SCENE_DATA.node_data[name].input.timer = nil
+			end
 		end)
 	end
 	

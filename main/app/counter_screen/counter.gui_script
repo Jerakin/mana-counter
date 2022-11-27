@@ -16,7 +16,10 @@ end
 
 
 function on_input(self, action_id, action)
-    local b = theme.button_icon("settings", action_id, action, function() monarch.show(hash("settings")) end)
+    local b = theme.button_icon("settings", action_id, action, function() 
+        monarch.show(hash("settings"))
+        msg.post(url.total_view, "minimise")
+    end)
     if b.over == false then
         counter.on_input(self, action_id, action)
     end

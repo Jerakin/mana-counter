@@ -64,6 +64,7 @@ function M.loaded()
 	return t
 end
 
+
 function M.all()
 	local t = {}
 	for i in pairs(M.counter) do
@@ -79,7 +80,9 @@ end
 
 function M.get(name)
 	local c = M.data[name]
-	c.enabled = M.counter[name].enabled
+	if M.counter[name] then
+		c.enabled = M.counter[name].enabled
+	end
 	return c
 end
 

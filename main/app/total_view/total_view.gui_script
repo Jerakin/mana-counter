@@ -1,0 +1,91 @@
+local monarch = require "monarch.monarch"
+local counters = require "main.app.counters"
+local url = require "utils.url"
+
+local function set_separator(self)
+    local loaded_data = counters.loaded()
+    local width = gui.get_width() / #loaded_data
+
+    local index = 0
+    local p = gui.get_position(self.sep)
+    for n in pairs(loaded_data) do
+        
+        if loaded_data[n].is_default then
+            index = index + 1
+        end
+    end
+    p.x = width * index
+    gui.set_position(self.sep, p)
+end
+
+function init(self)
+    msg.post(".", "acquire_input_focus")
+    gui.set_render_order(2)
+    url.set("total_view", msg.url("."))
+    
+    self.counter_text = gui.get_node("total_text")
+    self.handle = gui.get_node("handle/bg")
+    self.root = gui.get_node("root")
+    self.sep = gui.get_node("sep")
+    
+    self.max = 80
+    self.touch = {y=0, open=false}
+    set_separator(self)
+end
+
+function on_reload(self)
+
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("update_total") then
+        gui.set_text(self.counter_text, message.text)
+    elseif message_id == hash("minimise") then
+        if self.touch.open then
+            gui.animate(self.root, "position.y", 0, gui.EASING_INCUBIC, 0.3, 0, function() 
+                self.touch.y = 0
+                self.touch.open = false
+            end)
+        end
+    elseif message_id == hash("update_sep") then
+        set_separator(self)
+    end
+end
+
+function on_input(self, action_id, action)
+    if action.released then
+        if self.touch.y < 78 then
+            gui.animate(self.root, "position.y", 0, gui.EASING_INCUBIC, 0.3, 0, function() 
+                self.touch.y = 0
+            end)
+            self.touch.pressed = false
+            self.touch.open = false
+        else
+            self.touch = {y=80, open=true}
+        end
+    end
+    if gui.pick_node(self.handle, action.x, action.y) then
+        
+        if action.pressed then
+            self.touch.pressed = true
+            if self.touch.open then
+                self.touch.start = vmath.vector3(0, 80, 0)--gui.get_position(self.root)
+            else
+                self.touch.start = vmath.vector3(action.x, action.y, 0)
+            end
+        end
+        if self.touch.pressed then
+            if self.touch.y < 78 then
+                self.touch.open = false
+            end
+            self.touch.y = math.max(math.min(self.touch.y + action.dy, self.max), 0)
+       
+            
+            local old = gui.get_position(self.root)
+            old.y = self.touch.y
+            gui.set_position(self.root, old)
+        end
+    else
+    
+    end
+end
