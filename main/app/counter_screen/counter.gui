@@ -600,8 +600,8 @@ nodes {
 }
 nodes {
   position {
-    x: -51.0
-    y: 0.0
+    x: -32.0
+    y: -5.0
     z: 0.0
     w: 1.0
   }
@@ -660,7 +660,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 70.0
+    x: 53.0
     y: 53.0
     z: 0.0
     w: 1.0
@@ -673,7 +673,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "theme/button_tab"
+  texture: "theme/button"
   id: "settings/bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -692,11 +692,15 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 4
+  overridden_fields: 9
+  overridden_fields: 38
+  overridden_fields: 46
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
 }
 nodes {
   position {
