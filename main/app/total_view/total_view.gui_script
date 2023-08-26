@@ -37,7 +37,7 @@ function init(self)
     self.handle = gui.get_node("handle/bg")
     self.root = gui.get_node("root")
     self.sep = gui.get_node("sep")
-    
+    self.handle_pos = gui.get_position(self.handle)
     self.total_mana_max = 80
     self.history_max = 500
     self.touch = {y=0, open=false}
@@ -113,7 +113,8 @@ function on_input(self, action_id, action)
             local old = gui.get_position(self.root)
             old.y = self.touch.y
             gui.set_position(self.root, old)
-            
         end
+        self.handle_pos.x = math.max(math.min(action.x, 1100), 36)
+        gui.set_position(self.handle, self.handle_pos)
     end
 end
