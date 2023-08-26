@@ -65,5 +65,5 @@ scale = 0.01
 texture_profiles = /input/game.texture_profiles
 
 [native_extension]
-app_manifest = /generated.appmanifest
+app_manifest = /main/config/generated.appmanifest
 
