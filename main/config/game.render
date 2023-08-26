@@ -1,0 +1,5 @@
+script: "/main/config/game.render_script"
+materials {
+  name: "overdraw"
+  material: "/assets/debug/overdraw.material"
+}

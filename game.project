@@ -14,6 +14,7 @@ dependencies#9 = https://github.com/Jerakin/defold-color/archive/master.zip
 
 [bootstrap]
 main_collection = /main/main.collectionc
+render = /main/config/game.renderc
 
 [input]
 game_binding = /input/game.input_bindingc
@@ -62,4 +63,7 @@ scale = 0.01
 
 [graphics]
 texture_profiles = /input/game.texture_profiles
+
+[native_extension]
+app_manifest = /generated.appmanifest
 
