@@ -40,7 +40,7 @@ function init(self)
     self.handle_pos = gui.get_position(self.handle)
     self.total_mana_max = 80
     self.history_max = 500
-    self.touch = {y=0, open=false}
+    self.touch = {y=0, open=0}
     set_separator(self)
 end
 
@@ -49,10 +49,11 @@ function on_message(self, message_id, message, sender)
     if message_id == hash("update_total") then
         gui.set_text(self.counter_text, message.text)
     elseif message_id == hash("minimise") then
+        print("minimise")
         if self.touch.open then
             gui.animate(self.root, "position.y", 0, gui.EASING_INCUBIC, 0.3, 0, function() 
                 self.touch.y = 0
-                self.touch.open = false
+                self.touch.open = 0
             end)
         end
     elseif message_id == hash("update_sep") then
@@ -62,10 +63,11 @@ end
 
 local function minimize(self)
     gui.animate(self.root, "position.y", 0, gui.EASING_INCUBIC, 0.3, 0, function() 
-        self.touch.y = 0 
+        self.touch.y = 0
     end)
-    self.touch.pressed = false
     self.touch.open = 0
+    self.touch.pressed = false
+    
 end
 
 local function update_handle(self, screen_x)
@@ -81,22 +83,17 @@ end
 
 function on_input(self, action_id, action)
     gooey.dynamic_list("history_list", "history_list/stencil", "history_list/listitem_bg", history.history, action_id, action, nil, nil, update_list)
-    
     if action.released then
-        if self.touch.y < 78 then
+        if self.touch.open == 0 and self.touch.y < self.total_mana_max-2 then
             minimize(self)
         elseif self.touch.open > 0 and self.touch.y < self.history_max-2 then
             minimize(self)
-        else
-            local y = gui.get_position(self.root).y
-            local stage = 0
-            if self.touch.open == 1 then
-                stage = 2
-            else
-                stage = 1
-            end
-            self.touch = {y=y, open=stage}
+        elseif self.touch.open == 1 then
+            self.touch.open = 2
+        elseif  self.touch.open == 0 then
+            self.touch.open = 1
         end
+        self.touch.pressed = false
     end
     if gui.pick_node(self.handle, action.x, action.y) then
         if action.pressed then
@@ -104,27 +101,17 @@ function on_input(self, action_id, action)
         end
     end
     if self.touch.pressed then
-        if self.touch.open then
-            self.touch.start = gui.get_position(self.root) --vmath.vector3(0, 80, 0)--gui.get_position(self.root)
+        self.touch.start = gui.get_position(self.root)
+        if self.touch.open == 0 then
+            self.touch.y = math.max(math.min(self.touch.y + action.dy, self.total_mana_max), 0)
         else
-            self.touch.start = vmath.vector3(action.x, action.y, 0)
+            self.touch.y = math.max(math.min(self.touch.y + action.dy, self.history_max), 0)
         end
-        
-        if self.touch.pressed then
-            
-            if self.touch.y < self.total_mana_max-2 then
-                self.touch.open = 0
-            end
-            if self.touch.open == 0 then
-                self.touch.y = math.max(math.min(self.touch.y + action.dy, self.total_mana_max), 0)
-            else
-                self.touch.y = math.max(math.min(self.touch.y + action.dy, self.history_max), 0)
-            end
 
-            local old = gui.get_position(self.root)
-            old.y = self.touch.y
-            gui.set_position(self.root, old)
-        end
+        local old = gui.get_position(self.root)
+        old.y = self.touch.y
+        gui.set_position(self.root, old)
+
         update_handle(self, action.screen_x)
         return true
     end
