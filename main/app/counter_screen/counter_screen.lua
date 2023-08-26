@@ -4,6 +4,7 @@ local defsave = require("defsave.defsave")
 local gesture = require "in.gesture"
 local counters = require "main.app.counters"
 local url = require "utils.url"
+local history = require "main.app.total_view.history"
 
 local M = {}
 
@@ -72,6 +73,7 @@ local function setup()
 		if M.SCENE_DATA.node_data[name] == nil then
 			M.SCENE_DATA.node_data[name] = {}
 		end
+
 		local options = {
 			name=name,
 			color=data.color, 
@@ -204,6 +206,7 @@ function M.on_input(self, action_id, action)
 		local name = M.SCENE_DATA.active.name
 		M.SCENE_DATA.node_data[name].input.timer = timer.delay(5, false, function()
 			if M.SCENE_DATA.node_data[name] ~= nil then
+				history.add(name, M.SCENE_DATA.node_data[name].input.total)
 				gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total_p, false)
 				gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total_n, false)
 				M.SCENE_DATA.node_data[name].input.total = 0

@@ -1,7 +1,7 @@
 script: ""
 fonts {
-  name: "theme"
-  font: "/gooey-theme/fonts/theme.font"
+  name: "main"
+  font: "/assets/font/main.font"
 }
 textures {
   name: "theme"
@@ -52,7 +52,7 @@ nodes {
   yanchor: YANCHOR_NONE
   pivot: PIVOT_N
   adjust_mode: ADJUST_MODE_FIT
-  layer: ""
+  layer: "below"
   inherit_alpha: true
   slice9 {
     x: 7.0
@@ -69,6 +69,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 nodes {
   position {
@@ -127,6 +128,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 nodes {
   position {
@@ -161,7 +163,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "theme/button04"
+  texture: "theme/button"
   id: "listitem_bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -185,6 +187,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 nodes {
   position {
@@ -200,8 +203,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.4
+    y: 0.4
     z: 1.0
     w: 1.0
   }
@@ -220,7 +223,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "LIST ITEM"
-  font: "theme"
+  font: "main"
   id: "listitem_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -251,6 +254,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 layers {
   name: "below"
