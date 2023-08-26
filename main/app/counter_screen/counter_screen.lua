@@ -101,8 +101,6 @@ function M.reload()
 end
 
 function M.init(self)
-	msg.post(".", "acquire_input_focus")
-	
 	local settings = defsave.get("config", "settings")
 	M.SCENE_DATA.allow_negative = settings.negative
 	

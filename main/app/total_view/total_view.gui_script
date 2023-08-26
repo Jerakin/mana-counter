@@ -29,7 +29,6 @@ local function set_separator(self)
 end
 
 function init(self)
-    msg.post(".", "acquire_input_focus")
     gui.set_render_order(2)
     url.set("total_view", msg.url("."))
     
@@ -116,5 +115,9 @@ function on_input(self, action_id, action)
         end
         self.handle_pos.x = math.max(math.min(action.x, 1100), 36)
         gui.set_position(self.handle, self.handle_pos)
+        return true
+    end
+    if gui.pick_node(self.root, action.x, action.y) then
+        return true
     end
 end

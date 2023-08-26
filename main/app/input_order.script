@@ -1,0 +1,4 @@
+function init(self)
+	msg.post("/counter#counter", "acquire_input_focus")
+	msg.post("/extra_info#total_view", "acquire_input_focus")
+end

@@ -64,8 +64,6 @@ end
 
 
 function init(self)
-	msg.post(".", "acquire_input_focus")
-
 	defsave.appname = "mana_counter"
 	defsave.default_data.config = {
 		counter={
