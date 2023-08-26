@@ -15,6 +15,8 @@ M.SCENE_DATA.input_amount = 1
 M.SCENE_DATA.active = {}
 M.SCENE_DATA.allow_negative = false
 
+local SECONDS_FOR_HINT = 3
+
 local function create_counter(options)
 	local data = {}
 	local counter = gui.clone_tree(M.SCENE_DATA.template)
@@ -204,7 +206,7 @@ function M.on_input(self, action_id, action)
 		valid = true
 		gui.set_visible(M.SCENE_DATA.active.button, false)
 		local name = M.SCENE_DATA.active.name
-		M.SCENE_DATA.node_data[name].input.timer = timer.delay(5, false, function()
+		M.SCENE_DATA.node_data[name].input.timer = timer.delay(SECONDS_FOR_HINT, false, function()
 			if M.SCENE_DATA.node_data[name] ~= nil then
 				history.add(name, M.SCENE_DATA.node_data[name].input.total)
 				gui.set_visible(M.SCENE_DATA.node_data[name].nodes.total_p, false)
@@ -216,8 +218,8 @@ function M.on_input(self, action_id, action)
 	end
 	
 	local g = gesture.on_input(self, action_id, action)
-	if valid and g then
-		if g.tap or g.double_tap then
+	if g then
+		if valid and g.tap or g.double_tap then
 			increment(1)
 		end
 		if g.repeated then
