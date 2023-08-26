@@ -1,0 +1,10 @@
+APP NAME
+Mana Counter
+
+SHORT DESCRIPTION
+Keep track of your mana pool
+
+FULL DESCRIPTION
+Keep track of your mana pool.
+
+This app will help you keep track of your mana pool, you can also set up any additional counters to keep track of.
