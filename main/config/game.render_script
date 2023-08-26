@@ -1,3 +1,4 @@
+local screeninfo = require "utils.screeninfo"
 -- Copyright 2020-2023 The Defold Foundation
 -- Copyright 2014-2020 King
 -- Copyright 2009-2014 Ragnar Svensson, Christian Murray
@@ -45,6 +46,7 @@ local function get_projection(self)
 end
 
 function init(self)
+    screeninfo.init(render.get_window_width(), render.get_window_height())
     self.tile_pred = render.predicate({"tile"})
     self.gui_pred = render.predicate({"gui"})
     self.text_pred = render.predicate({"text"})
@@ -144,5 +146,7 @@ function on_message(self, message_id, message)
         self.projection_fn = fixed_fit_projection
     elseif message_id == hash("toggle_overdraw") then
         self.toggle_overdraw = not self.toggle_overdraw
+    elseif message_id == hash("window_event") then
+        screeninfo.update(render.get_window_width(), render.get_window_height())
     end
 end
