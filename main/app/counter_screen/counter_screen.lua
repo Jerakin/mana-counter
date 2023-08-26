@@ -170,6 +170,7 @@ function M.on_input(self, action_id, action)
 	if action_id ~= hash("touch") then
 		return 
 	end
+	local valid = false
 	if action.pressed then
 		M.SCENE_DATA.active = {}
 		for name in pairs(M.SCENE_DATA.node_data) do
@@ -200,6 +201,7 @@ function M.on_input(self, action_id, action)
 	end
 
 	if action.released and M.SCENE_DATA.active.button then
+		valid = true
 		gui.set_visible(M.SCENE_DATA.active.button, false)
 		local name = M.SCENE_DATA.active.name
 		M.SCENE_DATA.node_data[name].input.timer = timer.delay(5, false, function()
@@ -214,7 +216,7 @@ function M.on_input(self, action_id, action)
 	end
 	
 	local g = gesture.on_input(self, action_id, action)
-	if g then
+	if valid and g then
 		if g.tap or g.double_tap then
 			increment(1)
 		end
