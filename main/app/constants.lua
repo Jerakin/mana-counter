@@ -34,4 +34,7 @@ M.icons = {
 	"toughness", "untap", "vanguard", "x", "y", "z "
 }
 
+M.SAVE_CONFIG = "config"
+M.SAVE_DATA = "data"
+
 return M

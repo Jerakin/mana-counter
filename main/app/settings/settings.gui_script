@@ -5,6 +5,7 @@ local theme = require "gooey-theme.theme"
 local defsave = require("defsave.defsave")
 local counters = require "main.app.counters"
 local url = require "utils.url"
+local constants = require "main.app.constants"
 
 local function set_visible(name, visible)
     counters.set_visible(name, visible)
@@ -68,7 +69,7 @@ function init(self)
     gui.set_enabled(self.template_delete, false)
     
     self.additional_counters = {}
-    local settings = defsave.get("config", "settings")
+    local settings = defsave.get(constants.SAVE_CONFIG, "settings")
     
     theme.checkbox("negative").set_checked(settings.negative)
     self.transition = transitions.create(gui.get_node("root"))
@@ -81,9 +82,7 @@ function init(self)
 end
 
 function final(self)
-end
-
-function update(self, dt)
+    counters.save()
 end
 
 function on_message(self, message_id, message, sender)
@@ -113,10 +112,10 @@ function on_input(self, action_id, action)
         set_visible("Colorless", checkbox.checked)
     end)
     theme.checkbox("negative", action_id, action, function(checkbox)
-        local settings = defsave.get("config", "settings")
+        local settings = defsave.get(constants.SAVE_CONFIG, "settings")
         settings.negative = checkbox.checked
-        defsave.set("config", "settings", settings)
-        defsave.save("config")
+        defsave.set(constants.SAVE_CONFIG, "settings", settings)
+        defsave.save(constants.SAVE_CONFIG)
     end)
 
     for i in pairs(self.additional_counters) do

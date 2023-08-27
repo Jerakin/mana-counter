@@ -97,13 +97,15 @@ local function setup()
 end
 
 function M.reload()
-	local settings = defsave.get("config", "settings")
+	local settings = defsave.get(constants.SAVE_CONFIG, "settings")
 	M.SCENE_DATA.allow_negative = settings.negative
 	setup()
 end
 
 function M.init(self)
-	local settings = defsave.get("config", "settings")
+	local settings = defsave.get(constants.SAVE_CONFIG, "settings")
+	local counters = defsave.get(constants.SAVE_DATA, 'counters')
+	M.SCENE_DATA.counters = counters or {}
 	M.SCENE_DATA.allow_negative = settings.negative
 	
 	M.SCENE_DATA.template = gui.get_node("template_counter/box")
@@ -119,6 +121,12 @@ local function add_operator(num)
 	end
 	return num
 end
+
+local function save_data()
+	defsave.set(constants.SAVE_DATA, 'counters', M.SCENE_DATA.counters)
+	defsave.save(constants.SAVE_DATA)
+end
+
 
 local function increment(i)
 	local n = tonumber(gui.get_text(M.SCENE_DATA.active.text))
@@ -161,6 +169,7 @@ local function increment(i)
 			total = total + M.SCENE_DATA.counters[name]
 		end
 	end
+	save_data()
 	msg.post(url.total_view, "update_total", {text=total})
 end
 

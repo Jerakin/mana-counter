@@ -118,8 +118,8 @@ function M.number_of_custom()
 end
 
 function M.load()
-	M.counter = defsave.get("config", "counter")
-	local extra = defsave.get("config", "extra")
+	M.counter = defsave.get(constants.SAVE_CONFIG, "counter")
+	local extra = defsave.get(constants.SAVE_CONFIG, "extra")
 	if extra ~=nil then
 		for i in pairs(extra) do
 			local data = extra[i]
@@ -139,7 +139,6 @@ function M.set_visible(name, visible)
 end
 
 function M.save()
-	defsave.set("config", "counter", M.counter)
 	local extra = {}
 	local all_data = M.all()
 	for i in pairs(all_data) do
@@ -148,8 +147,9 @@ function M.save()
 			table.insert(extra, {color=data.color, texture=data.texture, name=data.name})
 		end
 	end
-	defsave.set("config", "extra", extra)
-	defsave.save("config")
+	defsave.set(constants.SAVE_CONFIG, "extra", extra)
+	defsave.save(constants.SAVE_DATA)
+	defsave.save(constants.SAVE_CONFIG)
 end
 
 return M

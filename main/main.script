@@ -77,14 +77,15 @@ function init(self)
 		settings={negative=false},
 		user_consent=0
 	}
-	defsave.load("config")
+	defsave.load(constants.SAVE_CONFIG)
+	defsave.load(constants.SAVE_DATA)
 
 	flow.start(function()
 
-		local consent = defsave.get("config", "user_consent")
+		local consent = defsave.get(constants.SAVE_CONFIG, "user_consent")
 		if consent == nil then
 			consent = 0
-			defsave.set("config", "user_consent", 0)
+			defsave.set(constants.SAVE_CONFIG, "user_consent", 0)
 		end
 
 		if tonumber(consent) ~= tonumber(constants.user_consent) then
@@ -93,7 +94,7 @@ function init(self)
 			msg.post("#", "show_main")
 		end
 
-		flow.until_true( function() return defsave.get("config", "user_consent") == constants.user_consent end)
+		flow.until_true( function() return defsave.get(constants.SAVE_CONFIG, "user_consent") == constants.user_consent end)
 		
 		local ga_config = gameanalytics_keys[platform.CURRENT] and sys.get_config(gameanalytics_keys[platform.CURRENT])
 		if not gameanalytics or ga_config == nil or ga_config == "" then
@@ -108,7 +109,6 @@ function init(self)
 		counters.load()
 		
 	end)
-	
 end
 
 function on_message(self, message_id, message, sender)
@@ -120,7 +120,7 @@ function on_message(self, message_id, message, sender)
 end
 
 function final(self)
-	local consent = defsave.get("config", "user_consent")
+	local consent = defsave.get(constants.SAVE_CONFIG, "user_consent")
 	if tonumber(consent) == tonumber(constants.user_consent) then
 		counters.save()
 	end
