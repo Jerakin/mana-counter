@@ -8,7 +8,7 @@ Intuative mana counter with the ability to add custom counters.
 
 
 ## Links
-* [Google Play](https://play.google.com/store/apps/details?id=com.jerakin.manacounter)
+* [Google Play](https://play.google.com/store/apps/details?id=com.jerakin.manacounter2)
 * [Itch](https://jerakin.itch.io/mana-counter)
 
 
