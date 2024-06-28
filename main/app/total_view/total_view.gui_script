@@ -4,6 +4,7 @@ local url = require "utils.url"
 local gooey = require "gooey.gooey"
 local history = require "main.app.total_view.history"
 local screeninfo = require "utils.screeninfo"
+local counter = require "main.app.counter_screen.counter_screen"
 
 local function update_list(list)
     for i,item in ipairs(list.items) do
@@ -52,6 +53,7 @@ function init(self)
     update_scale(gui.get_node('sep'))
     update_scale(gui.get_node('detail_1'))
     update_scale(gui.get_node('detail_2'))
+    gui.set_text(self.counter_text, counter.get_counter_sum())
 end
 
 

@@ -62,6 +62,18 @@ local function clear_old_nodes()
 	end
 end
 
+function M.get_counter_sum()
+	local total = 0
+
+	for name in pairs(M.SCENE_DATA.counters) do
+		local is_mana = counters.get(name)
+		if is_mana ~= nil and is_mana.is_default and (is_mana.enabled == nil or is_mana.enabled) then
+			total = total + M.SCENE_DATA.counters[name]
+		end
+	end
+	return total
+end
+
 local function setup()
 	clear_old_nodes()
 	local loaded_data = counters.loaded()
@@ -94,25 +106,6 @@ local function setup()
 		
 		M.SCENE_DATA.node_data[name].input = {total=t}
 	end
-end
-
-function M.reload()
-	local settings = defsave.get(constants.SAVE_CONFIG, "settings")
-	M.SCENE_DATA.allow_negative = settings.negative
-	setup()
-end
-
-function M.init(self)
-	local settings = defsave.get(constants.SAVE_CONFIG, "settings")
-	local counters = defsave.get(constants.SAVE_DATA, 'counters')
-	M.SCENE_DATA.counters = counters or {}
-	M.SCENE_DATA.allow_negative = settings.negative
-	
-	M.SCENE_DATA.template = gui.get_node("template_counter/box")
-	M.SCENE_DATA.root = gui.get_node("template_counter/box")
-	gui.set_visible(M.SCENE_DATA.template, false)
-	
-	setup()
 end
 
 local function add_operator(num)
@@ -162,19 +155,31 @@ local function increment(i)
 		gui.set_visible(M.SCENE_DATA.active.text, true)
 	end
 
-	local total = 0
-	for name in pairs(M.SCENE_DATA.counters) do
-		local is_mana = counters.get(name)
-		if is_mana ~= nil and is_mana.is_default then
-			total = total + M.SCENE_DATA.counters[name]
-		end
-	end
 	save_data()
-	msg.post(url.total_view, "update_total", {text=total})
+	msg.post(url.total_view, "update_total", {text=M.get_counter_sum()})
 end
 
 local function toggle_button(node, visible)
 	gui.set_visible(node, visible)
+end
+
+function M.reload()
+	local settings = defsave.get(constants.SAVE_CONFIG, "settings")
+	M.SCENE_DATA.allow_negative = settings.negative
+	setup()
+	msg.post(url.total_view, "update_total", {text=M.get_counter_sum()})
+end
+
+function M.init(self)
+	local settings = defsave.get(constants.SAVE_CONFIG, "settings")
+	local counters = defsave.get(constants.SAVE_DATA, 'counters')
+	M.SCENE_DATA.counters = counters or {}
+	M.SCENE_DATA.allow_negative = settings.negative
+
+	M.SCENE_DATA.template = gui.get_node("template_counter/box")
+	M.SCENE_DATA.root = gui.get_node("template_counter/box")
+	gui.set_visible(M.SCENE_DATA.template, false)
+	setup()
 end
 
 function M.on_input(self, action_id, action)
