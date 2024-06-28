@@ -173,17 +173,18 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 46
   template_node_child: true
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
   material: ""
 }
 nodes {
   position {
     x: 0.0
-    y: -26.0
+    y: -14.0
     z: 0.0
     w: 1.0
   }
@@ -194,14 +195,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.8
+    y: 0.8
     z: 1.0
     w: 1.0
   }
   size {
-    x: 45.0
-    y: 45.0
+    x: 64.0
+    y: 36.0
     z: 0.0
     w: 1.0
   }
@@ -231,9 +232,13 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.5
+  overridden_fields: 1
   overridden_fields: 2
+  overridden_fields: 3
+  overridden_fields: 4
   overridden_fields: 9
+  overridden_fields: 30
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0

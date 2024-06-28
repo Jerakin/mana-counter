@@ -5,6 +5,7 @@ local gooey = require "gooey.gooey"
 local history = require "main.app.total_view.history"
 local screeninfo = require "utils.screeninfo"
 local counter = require "main.app.counter_screen.counter_screen"
+local gesture = require "in.gesture"
 
 local function update_list(list)
     for i,item in ipairs(list.items) do
@@ -46,7 +47,7 @@ function init(self)
     self.handle_pos = gui.get_position(self.handle)
     self.total_mana_max = 80
     self.history_max = 500
-    self.touch = {y=0, open=0}
+    self.touch = {y=0, open=0, old=0}
     set_separator(self)
 
     -- scale some gui elements
@@ -72,64 +73,48 @@ function on_message(self, message_id, message, sender)
     end
 end
 
-local function minimize(self)
-    gui.animate(self.root, "position.y", 0, gui.EASING_INCUBIC, 0.3, 0, function() 
-        self.touch.y = 0
-    end)
-    self.touch.open = 0
-    self.touch.pressed = false
+local function update_drawer(self)
+    if self.touch.open == self.touch.old then
+        return
+    end
     
+    local new_y = 0
+    if self.touch.open == 0 then
+        new_y = 0
+    elseif self.touch.open == 1 then
+        new_y = self.total_mana_max
+    elseif self.touch.open == 2 then
+        new_y = self.history_max
+    end
+    self.touch.old = self.touch.open
+    gui.animate(self.root, "position.y", new_y, gui.EASING_INCUBIC, 0.3, 0)
 end
 
-local function update_handle(self, screen_x)
-    -- Normal converstion doesn't want to work
-    -- Doing this ugly hack of first setting the screen position
-    -- so I can then get the normal position which will convert it for me
-    local x = math.min(screen_x, screeninfo.get_window_width()-40)
-    self.handle_pos.x = math.max(x, 40)
-    gui.set_screen_position(self.handle, self.handle_pos)
-    local local_x = gui.get_position(self.handle)
-    gui.set_position(self.handle, vmath.vector3(local_x.x, 0, 0))
-end
 
 function on_input(self, action_id, action)
     if action_id ~= hash("touch") then
         return
     end
     gooey.dynamic_list("history_list", "history_list/stencil", "history_list/listitem_bg", history.history, action_id, action, nil, nil, update_list)
-    if action.released then
-        if self.touch.open == 0 and self.touch.y < self.total_mana_max-2 then
-            minimize(self)
-        elseif self.touch.open > 0 and self.touch.y < self.history_max-2 then
-            minimize(self)
-        elseif self.touch.open == 1 then
-            self.touch.open = 2
-        elseif  self.touch.open == 0 then
-            self.touch.open = 1
+    local g = gesture.on_input(self, action_id, action)
+    if g then
+        if g.swipe_up then
+            self.touch.open = math.min(self.touch.open + 1, 2)
+        elseif g.swipe_down then
+            self.touch.open = math.max(self.touch.open - 1, 0)
+        elseif g.tap then
+            if self.touch.open == 2 then
+                self.touch.open = 0
+            end
         end
-        self.touch.pressed = false
-    end
-    if gui.pick_node(self.handle, action.x, action.y) then
-        if action.pressed then
-            self.touch.pressed = true
-        end
-    end
-    if self.touch.pressed then
-        self.touch.start = gui.get_position(self.root)
-        if self.touch.open == 0 then
-            self.touch.y = math.max(math.min(self.touch.y + action.dy, self.total_mana_max), 0)
-        else
-            self.touch.y = math.max(math.min(self.touch.y + action.dy, self.history_max), 0)
-        end
-
-        local old = gui.get_position(self.root)
-        old.y = self.touch.y
-        gui.set_position(self.root, old)
-
-        update_handle(self, action.screen_x)
-        return true
+        update_drawer(self)
     end
     if gui.pick_node(self.root, action.x, action.y) then
+        if self.touch.open == 1 then
+            self.touch.open = 0
+        end
+        return true
+    elseif self.touch.open == 2 then
         return true
     end
 end
