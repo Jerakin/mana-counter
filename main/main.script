@@ -64,6 +64,7 @@ end
 
 
 function init(self)
+	window.set_dim_mode(window.DIMMING_OFF)
 	defsave.appname = "mana_counter"
 	defsave.default_data.config = {
 		counter={
