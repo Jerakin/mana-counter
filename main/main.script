@@ -96,7 +96,7 @@ function init(self)
 		end
 
 		flow.until_true( function() return defsave.get(constants.SAVE_CONFIG, "user_consent") == constants.user_consent end)
-		
+
 		local ga_config = gameanalytics_keys[platform.CURRENT] and sys.get_config(gameanalytics_keys[platform.CURRENT])
 		if not gameanalytics or ga_config == nil or ga_config == "" then
 			gameanalytics = require "utils.mock_gameanalytics"
@@ -108,7 +108,7 @@ function init(self)
 
 		log.outfile = sys.get_save_file("mana_counter", "log")
 		counters.load()
-		
+
 	end)
 end
 

@@ -148,6 +148,7 @@ function M.save()
 		end
 	end
 	defsave.set(constants.SAVE_CONFIG, "extra", extra)
+	defsave.set(constants.SAVE_CONFIG, "counter", M.counter)
 	defsave.save(constants.SAVE_DATA)
 	defsave.save(constants.SAVE_CONFIG)
 end
