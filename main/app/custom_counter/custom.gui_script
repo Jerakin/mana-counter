@@ -42,7 +42,7 @@ local function update_dynamic_icon_list(list)
     end
 end
 
-function randomize_colors()
+local function randomize_colors()
     local keyset = {}
     for k in pairs(w3c) do
         table.insert(keyset, w3c[k])
@@ -104,6 +104,7 @@ function on_input(self, action_id, action)
             local could_add = counters.add(name, {color=color, texture=icon})
             if could_add then
                 msg.post(url.settings, "reload_ui")
+                msg.post(url.counter, "reload_ui")
                 monarch.back()
             end
         end

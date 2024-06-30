@@ -89,7 +89,7 @@ end
 function M.add(name, data)
 	if M.data[name] == nil then 
 		M.data[name] = {color = data.color, texture=data.texture}
-		table.insert(M.counter, {name=name, enabled=false})
+		table.insert(M.counter, {name=name, enabled=true})
 		return true
 	end
 	return false
