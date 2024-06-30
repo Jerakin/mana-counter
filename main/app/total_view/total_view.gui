@@ -81,7 +81,7 @@ nodes {
 }
 nodes {
   position {
-    x: 568.0
+    x: 569.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -156,7 +156,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "theme/button_tab"
   id: "handle/bg"
-  xanchor: XANCHOR_NONE
+  xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_NONE
   pivot: PIVOT_N
   adjust_mode: ADJUST_MODE_FIT
@@ -173,6 +173,7 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 12
   overridden_fields: 46
   template_node_child: true
   size_mode: SIZE_MODE_AUTO
