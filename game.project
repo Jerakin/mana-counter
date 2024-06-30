@@ -1,6 +1,7 @@
 [project]
 title = ManaCounter
 version = 1.1.2
+bundle_resources = /assets/bundle
 dependencies#0 = https://github.com/britzl/monarch/archive/refs/tags/5.1.1.zip
 dependencies#1 = https://github.com/Jerakin/editor-script-atlas/archive/master.zip
 dependencies#2 = https://github.com/Jerakin/editor-script-align/archive/master.zip
