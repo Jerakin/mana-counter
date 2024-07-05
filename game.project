@@ -1,6 +1,6 @@
 [project]
 title = ManaCounter
-version = 1.1.3
+version = 1.1.4
 bundle_resources = /assets/bundle
 dependencies#0 = https://github.com/britzl/monarch/archive/refs/tags/5.1.1.zip
 dependencies#1 = https://github.com/Jerakin/editor-script-atlas/archive/master.zip
@@ -52,7 +52,7 @@ app_icon_192x192 = /assets/app_icons/icon_192.png
 input_method = HiddenInputField
 package = com.jerakin.manacounter2
 immersive_mode = 1
-version_code = 11
+version_code = 12
 
 [script]
 shared_state = 1
