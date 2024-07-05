@@ -67,10 +67,15 @@ function on_message(self, message_id, message, sender)
                 self.touch.y = 0
                 self.touch.open = 0
             end)
+            msg.post(url.counter, "anim-down")
         end
     elseif message_id == hash("update_sep") then
         set_separator(self)
     end
+end
+
+function final(self)
+    msg.post(url.counter, "anim-down")
 end
 
 local function update_drawer(self)
@@ -81,7 +86,9 @@ local function update_drawer(self)
     local new_y = 0
     if self.touch.open == 0 then
         new_y = 0
+        msg.post(url.counter, "anim-down")
     elseif self.touch.open == 1 then
+        msg.post(url.counter, "anim-up")
         new_y = self.total_mana_max
     elseif self.touch.open == 2 then
         new_y = self.history_max

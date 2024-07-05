@@ -6,11 +6,21 @@ local monarch = require "monarch.monarch"
 function init(self)
     url.set("counter", msg.url("."))
     counter.init(self)
+    self.root = gui.get_node("root")
 end
 
 function on_message(self, message_id, message)
     if message_id == hash("reload_ui") then
         counter.reload()
+    elseif message_id == hash("anim-up") then
+        for name, data in pairs(counter.SCENE_DATA.node_data) do
+            gui.animate(data.nodes.symbol, "position.y", -269+40, gui.EASING_INCUBIC, 0.3, 0)
+        end
+        
+    elseif message_id == hash("anim-down") then
+        for name, data in pairs(counter.SCENE_DATA.node_data) do
+            gui.animate(data.nodes.symbol, "position.y", -269, gui.EASING_INCUBIC, 0.3, 0)
+        end
     end
 end
 

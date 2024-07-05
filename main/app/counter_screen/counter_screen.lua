@@ -28,6 +28,7 @@ local function create_counter(options)
 	data.total_p = counter["template_counter/text_total_positive"]
 	data.total_n = counter["template_counter/text_total_negative"]
 	data.text = counter["template_counter/text"]
+	data.symbol = counter["template_counter/symbol"]
 	
 	gui.set_visible(data.root, true)
 	gui.set_color(data.root, options.color)
@@ -38,9 +39,7 @@ local function create_counter(options)
 	gui.set_size(data.remove, b_size)
 	gui.set_visible(data.add, false)
 	gui.set_visible(data.remove, false)
-
-	gui.play_flipbook(counter["template_counter/symbol"], options.texture)
-
+	gui.play_flipbook(data.symbol, options.texture)
 	
 	if M.SCENE_DATA.counters[options.name] ~= nil then
 		if M.SCENE_DATA.counters[options.name] ~= 0 then
