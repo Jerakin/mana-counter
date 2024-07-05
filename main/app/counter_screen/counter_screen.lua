@@ -162,6 +162,17 @@ local function toggle_button(node, visible)
 	gui.set_visible(node, visible)
 end
 
+function M.reset()
+	local settings = defsave.get(constants.SAVE_CONFIG, "settings")
+	for name, data in pairs(M.SCENE_DATA.counters) do
+		if not counters.data[name].is_default and settings.reset_custom then
+			M.SCENE_DATA.counters[name] = 0
+		elseif counters.data[name].is_default then
+			M.SCENE_DATA.counters[name] = 0
+		end
+	end
+end
+
 function M.reload()
 	local settings = defsave.get(constants.SAVE_CONFIG, "settings")
 	M.SCENE_DATA.allow_negative = settings.negative
