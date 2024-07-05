@@ -65,6 +65,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 nodes {
   position {
@@ -123,6 +124,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 nodes {
   position {
@@ -181,6 +183,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 nodes {
   position {
@@ -217,7 +220,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Hi,\n"
   "\n"
-  "Thank you for downloading Mana Counter. This app uses analytics to gather usage date (app start, app close) as well as crash analytics to help fix any bugs. Even though I am not using it for marketing and advertising the library (GameAnalytics) that I use to collect this might.\n"
+  "Thank you for downloading Mana Counter. This app uses analytics to gather usage date (app start, app close) as well as crash analytics to help fix any bugs. Even though I am not using it for marketing and advertising, the library (GameAnalytics) that I use to collect this might.\n"
   "\n"
   "\n"
   "Do you consent to have this data submitted to for this purpose?"
@@ -252,6 +255,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 nodes {
   position {
@@ -318,6 +322,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 nodes {
   position {
@@ -381,8 +386,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 190.0
-    y: 45.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -418,6 +423,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 nodes {
   position {
@@ -485,6 +491,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 nodes {
   position {
@@ -548,8 +555,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 190.0
-    y: 45.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -585,6 +592,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 nodes {
   position {
@@ -652,6 +660,7 @@ nodes {
   custom_type: 0
   enabled: true
   visible: true
+  material: ""
 }
 layers {
   name: "below"
