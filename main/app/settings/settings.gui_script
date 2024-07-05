@@ -150,6 +150,9 @@ function on_input(self, action_id, action)
     theme.button("info", action_id, action, function()
         monarch.show("info")
     end)
+    theme.button("about", action_id, action, function()
+        monarch.show("about")
+    end)
     return true
 end
 

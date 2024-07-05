@@ -1,4 +1,6 @@
 images {
+  image: "/gooey-theme/images/kofi.png"
+}images {
   image: "/gooey-theme/images/total_view.png"
 }
 images {
