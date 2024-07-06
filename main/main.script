@@ -7,7 +7,7 @@ local platform = require "utils.platform"
 local log = require "utils.log"
 local constants = require "main.app.constants"
 local flow = require "utils.flow"
-
+local resize = require "resize.resize"
 
 local function send_crash_on_start()
 	local handle = crash.load_previous()
@@ -115,6 +115,9 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("show_main") then
 		monarch.show(hash("main"))
+		if sys.get_engine_info().is_debug then
+			monarch.show(hash("resize"), {no_stack=true})
+		end
 	elseif message_id == hash("user_consent") then
 		monarch.show(hash("tracking"))
 	end

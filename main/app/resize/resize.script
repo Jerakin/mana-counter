@@ -1,0 +1,7 @@
+local resize = require "resize.resize"
+
+
+function init(self)
+	resize.add("pixel", vmath.vector3(1440, 2560, 0.3))
+	resize.add("pixel-landscape", vmath.vector3(2560, 1440, 0.3))
+end
