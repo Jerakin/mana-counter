@@ -58,13 +58,17 @@ local gameanalytics_keys = {
 	--["iPhone OS"] = "gameanalytics.game_key_ios"
 }
 
-local function window_resized()
-	msg.post("@render:", "window_event")
+
+local function window_callback(self, event, data)
+	if event == window.WINDOW_EVENT_RESIZED then
+		msg.post("@render:", "window_event", data)
+	end
 end
 
 
 function init(self)
 	window.set_dim_mode(window.DIMMING_OFF)
+	window.set_listener(window_callback)
 	defsave.appname = "mana_counter"
 	defsave.default_data.config = {
 		counter={
