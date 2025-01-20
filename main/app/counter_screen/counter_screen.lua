@@ -164,6 +164,9 @@ end
 
 function M.delete(name)
 	M.SCENE_DATA.counters[name] = nil
+	if M.SCENE_DATA.active.name == name then
+		M.SCENE_DATA.active = {}
+	end
 end
 
 function M.reset()
