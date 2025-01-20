@@ -6,6 +6,7 @@ local defsave = require("defsave.defsave")
 local counters = require "main.app.counters"
 local url = require "utils.url"
 local constants = require "main.app.constants"
+local flow = require "utils.flow"
 
 local function set_visible(name, visible)
     counters.set_visible(name, visible)
@@ -143,9 +144,13 @@ function on_input(self, action_id, action)
         end)
     end 
     theme.button("close", action_id, action, function()
-        msg.post(url.total_view, "update_sep")
-        msg.post(url.counter, "reload_ui")
-        monarch.back()
+        flow.start(function()
+            msg.post(url.total_view, "update_sep")
+            msg.post(url.counter, "reload_ui")
+            flow.frames(5)
+            monarch.back()
+        end)
+        
     end)
     theme.button("info", action_id, action, function()
         monarch.show("info")
