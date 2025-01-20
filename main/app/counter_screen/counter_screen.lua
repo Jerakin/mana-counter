@@ -162,6 +162,10 @@ local function toggle_button(node, visible)
 	gui.set_visible(node, visible)
 end
 
+function M.delete(name)
+	M.SCENE_DATA.counters[name] = nil
+end
+
 function M.reset()
 	local settings = defsave.get(constants.SAVE_CONFIG, "settings")
 	for name, data in pairs(M.SCENE_DATA.counters) do
@@ -180,6 +184,14 @@ function M.reload()
 	msg.post(url.total_view, "update_total", {text=M.get_counter_sum()})
 end
 
+local function fix_1_1_5(counter_data)
+	for name, d in pairs(M.SCENE_DATA.counters) do
+		if counters.data[name] == nil then
+			M.SCENE_DATA.counters[name] = nil
+		end
+	end
+end
+
 function M.init(self)
 	local settings = defsave.get(constants.SAVE_CONFIG, "settings")
 	local counters = defsave.get(constants.SAVE_DATA, 'counters')
@@ -189,6 +201,9 @@ function M.init(self)
 	M.SCENE_DATA.template = gui.get_node("template_counter/box")
 	M.SCENE_DATA.root = gui.get_node("template_counter/box")
 	gui.set_visible(M.SCENE_DATA.template, false)
+
+	fix_1_1_5()
+
 	setup()
 end
 

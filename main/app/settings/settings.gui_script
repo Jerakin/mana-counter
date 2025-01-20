@@ -132,6 +132,7 @@ function on_input(self, action_id, action)
         end)
         theme.button(data.name .. "_delete", action_id, action, function(button)
             counters.delete(data.name)
+            msg.post(url.counter, "delete", {name=data.name})
             set_inital_state(self)
         end)
         

@@ -27,6 +27,8 @@ function on_message(self, message_id, message)
         for name, data in pairs(counter.SCENE_DATA.node_data) do
             gui.animate(data.nodes.symbol, "position.y", -269, gui.EASING_INCUBIC, 0.3, 0)
         end
+    elseif message_id == hash("delete") then
+        counter.delete(message.name)
     end
 end
 
