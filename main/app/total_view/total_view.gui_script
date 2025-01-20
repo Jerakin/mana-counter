@@ -25,6 +25,9 @@ end
 
 local function set_separator(self)
     local loaded_data = counters.loaded()
+    if #loaded_data == 0 then
+        return
+    end
     local width = screeninfo.get_window_width() / #loaded_data
     local index = 0
     local p = gui.get_screen_position(self.sep)
